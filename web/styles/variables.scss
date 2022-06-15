@@ -1,0 +1,36 @@
+// ========COLORS==================================================================
+$white: white;
+$beige: rgb(253, 236, 202);
+$brown: rgb(227, 210, 189);
+$gray: #646072;
+$darkGray: rgb(72, 69, 83);
+$cardBg: rgb(239, 241, 245);
+$headerGray: rgb(170, 174, 182);
+$subtextGray: rgb(134, 131, 146);
+$subtextHover: rgb(67, 83, 104);
+
+// ========FONTS==================================================================
+$nav: 'Raleway', sans-serif;
+$title: 'Gelasio', serif;
+$paragraph: 'Open Sans', sans-serif;
+$subtext: 'Lato', sans-serif;
+
+// ========MEDIA QUERIES==================================================================
+
+@mixin small {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media (max-width: 1750px) {
+    @content;
+  }
+}

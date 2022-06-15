@@ -1,0 +1,72 @@
+field: 1dc9dda5-0e44-42f8-93bf-6f846eb9922f # Box Matrix
+fieldLayouts:
+  7b7dc8d2-7f7d-44ce-b8db-54f2f47c5f66:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 2d94dd5b-59fa-4fdd-bd4e-23b60796bbde # Box Title
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8a091e80-1113-44cb-b73f-cb7e1cdd26b5
+            warning: null
+            width: 100
+          -
+            fieldUid: 0b4e7730-a3bc-4b08-87ae-a7971bc6ad67 # Subtext
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 344b73da-cfb7-4d37-a3ce-91de34959132
+            warning: null
+            width: 100
+        name: Content
+        uid: fab1e778-0dc1-4251-9283-b041dcbdc8f1
+fields:
+  0b4e7730-a3bc-4b08-87ae-a7971bc6ad67: # Subtext
+    columnSuffix: zeskisam
+    contentColumnType: text
+    fieldGroup: null
+    handle: subtext
+    instructions: null
+    name: Subtext
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: 'Enter the subtext for the box'
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  2d94dd5b-59fa-4fdd-bd4e-23b60796bbde: # Box Title
+    columnSuffix: txxvughz
+    contentColumnType: text
+    fieldGroup: null
+    handle: boxTitle
+    instructions: null
+    name: 'Box Title'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: 'Enter a title for the box'
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: boxMatrix
+name: 'Box Matrix'
+sortOrder: 1

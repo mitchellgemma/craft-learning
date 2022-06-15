@@ -1,0 +1,12 @@
+defaultPlacement: end
+enableVersioning: true
+handle: boxes
+name: Boxes
+propagationMethod: all
+siteSettings:
+  c468402d-2f03-40e5-a951-1305998c8597: # Bonfire Craft
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: channel

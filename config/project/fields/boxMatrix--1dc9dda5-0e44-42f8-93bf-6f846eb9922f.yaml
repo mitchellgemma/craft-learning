@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 0ca6b6ea-51af-442c-8ec1-67d19b75b009 # Common
+handle: boxMatrix
+instructions: null
+name: 'Box Matrix'
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_boxmatrix}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

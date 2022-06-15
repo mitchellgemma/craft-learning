@@ -1,0 +1,39 @@
+fieldLayouts:
+  aac08f82-f945-4b9b-a7ea-312fc7c251a6:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 13e5e651-d1c6-49c8-a2ec-18d7995a0081
+            warning: null
+            width: 100
+        name: Content
+        uid: b0bc7842-1a83-455a-9ce3-58235b6ebf88
+fs: learning
+handle: pageBackground
+name: 'Page Background'
+sortOrder: 1
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

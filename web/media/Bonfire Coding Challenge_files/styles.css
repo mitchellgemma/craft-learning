@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Quantico&display=swap");
+header {
+  margin: 30px;
+  height: 100vh;
+}
+
+.header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../media/mountain-background_50.jpeg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 50%;
+  width: 100%;
+  height: 40vh;
+  color: white;
+  background-size: cover;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2% 5% 1% 8%;
+  height: 15%;
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.navbar .nav-links {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-size: 1.5vh;
+}
+
+.navbar .nav-logo {
+  font-size: 2.5vh;
+}
+
+.navbar .nav-home-away {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .nav-home-away:hover {
+  color: #fdecca;
+}
+
+.navbar #design {
+  color: #fdecca;
+  font-weight: 100;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.header-title {
+  font-family: "Gelasio", serif;
+}
+
+.description {
+  width: 35%;
+}
+/*# sourceMappingURL=styles.css.map */

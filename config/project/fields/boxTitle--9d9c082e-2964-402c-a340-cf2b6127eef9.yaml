@@ -1,0 +1,19 @@
+columnSuffix: hprpcpga
+contentColumnType: text
+fieldGroup: 0ca6b6ea-51af-442c-8ec1-67d19b75b009 # Common
+handle: boxTitle
+instructions: null
+name: 'Box Title'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: 'Enter text for box Title'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,14 +1,19 @@
 columnSuffix: fbjdxugz
-contentColumnType: string(255)
+contentColumnType: text
 fieldGroup: 0ca6b6ea-51af-442c-8ec1-67d19b75b009 # Common
 handle: boxButton
 instructions: null
 name: 'Box Button'
 searchable: false
 settings:
-  maxLength: 255
-  types:
-    - url
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
 translationKeyFormat: null
 translationMethod: none
-type: craft\fields\Url
+type: craft\fields\PlainText

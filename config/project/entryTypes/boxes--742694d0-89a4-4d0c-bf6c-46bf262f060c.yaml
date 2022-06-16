@@ -47,6 +47,26 @@ fieldLayouts:
             uid: bd50835b-606f-40c6-9dad-bda40d3eded8
             warning: null
             width: 100
+          -
+            fieldUid: d28e128e-1c93-466a-aa51-e63fde158210 # Box Button
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 286605f5-31f3-4247-834a-edb7253cd789
+            warning: null
+            width: 100
+          -
+            fieldUid: fcc7d786-4378-4f36-b3c2-75906707a81f # Box Category
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1223c804-f8d6-449e-9bb7-609a0d8b06ec
+            warning: null
+            width: 100
         name: Content
         uid: ddb975fb-59fd-4fdd-899b-553acbebf86d
 handle: boxes

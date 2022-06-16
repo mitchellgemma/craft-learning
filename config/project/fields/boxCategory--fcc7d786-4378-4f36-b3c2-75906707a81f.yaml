@@ -1,0 +1,25 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 0ca6b6ea-51af-442c-8ec1-67d19b75b009 # Common
+handle: boxCategory
+instructions: null
+name: 'Box Category'
+searchable: false
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSiteMenu: false
+  source: 'group:0cf3234f-22a2-4771-b52c-f3f2946bad24' # Type of Number
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

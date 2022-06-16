@@ -115,7 +115,7 @@ fields:
       minRelations: null
       selectionLabel: null
       showSiteMenu: true
-      source: 'group:97b8480e-a18a-423b-a4ca-5c544c87137a' # Type of Number
+      source: 'group:0cf3234f-22a2-4771-b52c-f3f2946bad24' # Type of Number
       sources: '*'
       targetSiteId: null
       validateRelatedElements: false

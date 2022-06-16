@@ -1,6 +1,6 @@
 defaultPlacement: end
 fieldLayouts:
-  55c6535d-1bc8-434e-b7a6-9bbd72f3dd90:
+  cd45a943-282a-4a46-a537-9a1ffdacb784:
     tabs:
       -
         elements:
@@ -25,18 +25,18 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\TitleField
-            uid: ea6aa189-cdea-4cb7-ac26-750bda556a28
+            uid: e15f1721-17c4-4ccc-92a0-9e278793ad95
             warning: null
             width: 100
         name: Content
-        uid: 2511bc9c-1276-4250-99e2-eeabe6f3ef57
+        uid: bb52c3bb-529a-4993-8b01-fd03681ed1a5
 handle: typeOfNumber
 name: 'Type of Number'
 siteSettings:
   c468402d-2f03-40e5-a951-1305998c8597: # Bonfire Craft
-    hasUrls: false
-    template: null
-    uriFormat: null
+    hasUrls: true
+    template: category.html
+    uriFormat: 'type-of-number/{slug}'
 structure:
   maxLevels: null
-  uid: f04255bb-5193-4bf3-aa52-047beb4ec84d
+  uid: edc4bf92-feea-46af-b663-11af6ac391d9

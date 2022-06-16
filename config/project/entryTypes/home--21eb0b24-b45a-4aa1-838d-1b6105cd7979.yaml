@@ -58,13 +58,13 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 1dc9dda5-0e44-42f8-93bf-6f846eb9922f # Box Matrix
+            fieldUid: 486106d1-f090-4258-8609-0299cb1c175b # Boxes
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f9f62437-fa37-4726-a9c2-761dd7583b75
+            uid: d81ccc63-4409-44d6-84d6-593bd0c3b6ba
             warning: null
             width: 100
         name: Content

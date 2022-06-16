@@ -1,0 +1,14 @@
+columnSuffix: fbjdxugz
+contentColumnType: string(255)
+fieldGroup: 0ca6b6ea-51af-442c-8ec1-67d19b75b009 # Common
+handle: boxButton
+instructions: null
+name: 'Box Button'
+searchable: false
+settings:
+  maxLength: 255
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

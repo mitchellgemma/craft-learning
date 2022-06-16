@@ -36,9 +36,11 @@
             <!-- Above and below serve the same purpose, just different ways to do it -->
 
         {% set boxes = entry.boxMatrix.all() %}
+        
 
         {% for box in boxes %}
-        <div class="card odd">
+        <div class= "card {{ box.category.one().title }}">
+
             <!-- set boxes equal to craft.entries.section ("boxes") -->
             <!-- for entry in box  -->
             <div>
@@ -46,7 +48,9 @@
                 <h4>{{ box.subtext }}</h4>
             </div>
             <div class="btn-group card-btn">
-                <button>VIEW THE CASE STUDY</button>
+                <a href= {{ box.boxUrl }}>
+                    <button>{{ box.buttonText }}</button>
+                </a>
             </div>
         </div>
         {% endfor %}

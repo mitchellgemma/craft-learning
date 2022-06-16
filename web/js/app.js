@@ -8,6 +8,9 @@ const homeAway = document.querySelectorAll('.nav-links')
 const arrayButtons = Array.from(buttons[0].children)
 const navArray = Array.from(homeAway[0].children)
 
+console.log('odd boxes', oddBoxes)
+
+
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
@@ -28,6 +31,7 @@ const clickButton = (e) => {
     else if (e.target.className == 'show-odd') {
       evenBoxes[i].style.display = 'none'
       oddBoxes[i].style.display = 'flex'
+
       // when show all is clicked, all displays will be changed back to normal
     } else if (e.target.className == 'show-all') {
       evenBoxes[i].style.display = 'flex'

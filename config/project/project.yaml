@@ -1,4 +1,4 @@
-dateModified: 1655327892
+dateModified: 1655392708
 email:
   fromEmail: mitch@hellobonfire.com
   fromName: 'Bonfire Craft'
@@ -20,15 +20,20 @@ meta:
     2df774ce-cda6-438a-9c97-6be6164e50a9: 'Bonfire Craft' # Bonfire Craft
     3ee075a2-ce3a-40e9-9684-c24d186be8f0: 'Box Matrix' # Box Matrix
     4cb3aaa5-2729-4446-94cf-06a1eac2cb4f: 'Page Description' # Page Description
+    6c824489-1b68-499c-9c9d-f4c72e94be79: Category # Category
     9b0de38d-72b7-4341-b3de-a7870bc781bf: 'Page Background' # Page Background
     9d9c082e-2964-402c-a340-cf2b6127eef9: 'Box Title' # Box Title
     21eb0b24-b45a-4aa1-838d-1b6105cd7979: Home # Home
     77c9e69f-7628-4f93-9a54-cdfdb8009ac1: Boxes # Boxes
+    97b8480e-a18a-423b-a4ca-5c544c87137a: 'Type of Number' # Type of Number
     45150b46-6997-42f3-8551-b9250ddb125e: 'Page Background' # Page Background
     486106d1-f090-4258-8609-0299cb1c175b: Boxes # Boxes
     742694d0-89a4-4d0c-bf6c-46bf262f060c: Boxes # Boxes
     7054554a-3706-4536-b965-b0331a162a6c: Home # Home
+    a4ed7be9-7105-4e16-8351-4816b81c704f: 'Button Text' # Button Text
+    a9516c1c-e914-43fa-9448-3ce930e339ac: 'Box URL' # Box URL
     c468402d-2f03-40e5-a951-1305998c8597: 'Bonfire Craft' # Bonfire Craft
+    d28e128e-1c93-466a-aa51-e63fde158210: 'Box Button' # Box Button
     e01820d5-d458-4b66-9686-e1c1c9f7788a: 'Box Subtext' # Box Subtext
     f8e89ea8-41cd-4bcb-ab1f-17f572ad9ab7: 'Page Title' # Page Title
 system:

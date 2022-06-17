@@ -58,6 +58,16 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            fieldUid: 24be0cca-4df1-43ba-8e79-72f0ab3c5a7b # Button URL
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e9c8b029-490b-437f-9691-63edfefcb9f9
+            warning: null
+            width: 100
+          -
             fieldUid: fcc7d786-4378-4f36-b3c2-75906707a81f # Box Category
             instructions: null
             label: null

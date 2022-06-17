@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@500&family=Open+Sans:wght@300&family=Quantico&display=swap" rel="stylesheet">   <link rel="stylesheet" href="./styles/styles.css" />
-    <title>Bonfire Coding Challenge</title>
-  </head>
-  <header>
+{% extends "layout.html" %}
+{% block content %}
+<header>
     <div class="header-container" style="background-image: url({{ entry.pageBackground.one.url }})">
         <div class="navbar">
             <h3 class="nav-logo"><span id="logo">LOGO</span><span id="design">DESIGN</span></h3>
@@ -20,47 +13,47 @@
         <div class="title">
             <h1 class="header-title">{{ entry.pageTitle }}</h1>
             <h4 class="description">{{ entry.pageDescription }}</h6>
-        </div>
-        <div class="btn-group">
-            <a href = "https://bonfire-craft.nitro/">
-                <button id="checked" class="show-all">SHOW ALL</button>
-            </a>
-            <a href = "https://bonfire-craft.nitro/type-of-number/even">
-                <button class="show-even">SHOW EVEN</button>
-            </a>
-            <a href = "https://bonfire-craft.nitro/type-of-number/odd">
-                <button class="show-odd">SHOW ODD</button>
-            </a>
+            </div>
+            <div class="btn-group">
+                <a href = "https://bonfire-craft.nitro/">
+                    <button id="checked" class="show-all">SHOW ALL</button>
+                </a>
+                <a href = "https://bonfire-craft.nitro/type-of-number/even">
+                    <button class="show-even">SHOW EVEN</button>
+                </a>
+                <a href = "https://bonfire-craft.nitro/type-of-number/odd">
+                    <button class="show-odd">SHOW ODD</button>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 </header>
 <body>
     <div class="cards-container">
         
-         {% set boxes = craft.entries()
+        {% set boxes = craft.entries()
             .section('boxes').all %}
             <!-- Above and below serve the same purpose, just different ways to do it -->
-
-        {% set boxes = entry.boxes.all() %}
-        
-
-        {% for box in boxes %}
-        <div class= "card">
-
-            <div>
-                <h2>{{ box.boxTitle }}</h2>
-                <h4>{{ box.boxSubtext }}</h4>
+            
+            {% set boxes = entry.boxes.all() %}
+            
+            
+            {% for box in boxes %}
+            <div class= "card">
+                
+                <div>
+                    <h2>{{ box.boxTitle }}</h2>
+                    <h4>{{ box.boxSubtext }}</h4>
+                </div>
+                <div class="btn-group card-btn">
+                    <a href= {{ box.boxUrl }}>
+                        <button>{{ box.boxButton }}</button>
+                    </a>
+                </div>
             </div>
-            <div class="btn-group card-btn">
-                <a href= {{ box.boxUrl }}>
-                    <button>{{ box.boxButton }}</button>
-                </a>
-            </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
     <script src="./js/app.js"></script>
 </body>
-</html>
+{% endblock %}

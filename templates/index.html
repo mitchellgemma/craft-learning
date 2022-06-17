@@ -8,7 +8,7 @@
             <h3 class="nav-logo"><span id="logo">LOGO</span><span id="design">DESIGN</span></h3>
             <div class="nav-links">
                 {% nav node in links %}
-                <a class="nav-home-away" id="home" href="#">{{ node.link }}</a>
+                {{ node.link }}
                 {% endnav %}
             </div>
         </div>

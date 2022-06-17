@@ -39,22 +39,7 @@
             <!-- Above and below serve the same purpose, just different ways to do it -->
             
             #}
-            {% set boxes = entry.boxes.all() %}
-            
-            {% for box in boxes %}
-            <div class= "card">
-                
-                <div>
-                    <h2>{{ box.boxTitle }}</h2>
-                    <h4>{{ box.boxSubtext }}</h4>
-                </div>
-                <div class="btn-group card-btn">
-                    <a href= {{ box.buttonUrl }}>
-                        <button>{{ box.boxButton }}</button>
-                    </a>
-                </div>
-            </div>
-            {% endfor %}
+            {% include "boxes.html" %}
         </div>
     </div>
     <script src="./js/app.js"></script>

@@ -1,0 +1,18 @@
+{% block content %}
+{% set boxes = entry.boxes.all() %}
+            
+{% for box in boxes %}
+<div class= "card">
+    
+    <div>
+        <h2>{{ box.boxTitle }}</h2>
+        <h4>{{ box.boxSubtext }}</h4>
+    </div>
+    <div class="btn-group card-btn">
+        <a href= {{ box.buttonUrl }}>
+            <button>{{ box.boxButton }}</button>
+        </a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -4,12 +4,12 @@
 <div class= "card">
     
     <div>
-        <h2>{{ box.boxTitle }}</h2>
-        <h4>{{ box.boxSubtext }}</h4>
+        <h2>{{ box.boxTitle  | upper }}</h2>
+        <h4>{{ box.boxSubtext | lower }}</h4>
     </div>
     <div class="btn-group card-btn">
         <a href= {{ box.buttonUrl }}>
-            <button>{{ box.boxButton }}</button>
+            <button>{{ box.boxButton | upper }}</button>
         </a>
     </div>
 </div>

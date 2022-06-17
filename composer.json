@@ -1,6 +1,7 @@
 {
     "require": {
         "craftcms/cms": "^4.0.0.1",
+        "craftcms/redactor": "3.0.0",
         "verbb/navigation": "2.0.2",
         "vlucas/phpdotenv": "^5.4.0"
     },

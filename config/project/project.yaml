@@ -1,4 +1,4 @@
-dateModified: 1655484052
+dateModified: 1655486178
 email:
   fromEmail: mitch@hellobonfire.com
   fromName: 'Bonfire Craft'
@@ -45,6 +45,10 @@ plugins:
     enabled: true
     licenseKey: D6J26XVS2DHNSM0AZW5G5KKP
     schemaVersion: 2.0.2
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
 system:
   edition: solo
   live: true

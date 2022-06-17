@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
+
+{% set links = craft.navigation.nodes('mainNavigation').all() %}
 <header>
     <div class="header-container" style="background-image: url({{ entry.pageBackground.one.url }})">
         <div class="navbar">
             <h3 class="nav-logo"><span id="logo">LOGO</span><span id="design">DESIGN</span></h3>
             <div class="nav-links">
-                <a class="nav-home-away" id="home" href="#">Home</a>
-                <a class="nav-home-away" id="away" href="#">Away</a>
+                {% nav node in links %}
+                <a class="nav-home-away" id="home" href="#">{{ node.link }}</a>
+                {% endnav %}
             </div>
         </div>
         
@@ -31,12 +34,12 @@
 <body>
     <div class="cards-container">
         
-        {% set boxes = craft.entries()
-            .section('boxes').all %}
+       {# <!-- {% set boxes = craft.entries()
+            .section('boxes').all %} -->
             <!-- Above and below serve the same purpose, just different ways to do it -->
             
+            #}
             {% set boxes = entry.boxes.all() %}
-            
             
             {% for box in boxes %}
             <div class= "card">

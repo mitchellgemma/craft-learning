@@ -3,13 +3,21 @@ const buttons = document.querySelectorAll('.btn-group')
 const buts = document.querySelectorAll('.but')
 const oddBoxes = document.querySelectorAll('.odd')
 const evenBoxes = document.querySelectorAll('.even')
+const even = document.querySelectorAll('.show-even')
+const odd = document.querySelectorAll('.show-odd')
+const all = document.querySelectorAll('.show-all')
 const homeAway = document.querySelectorAll('.nav-links')
 
 // elements to add event listeners to
 const arrayButtons = Array.from(buttons[0].children)
 const navArray = Array.from(homeAway[0].children)
 
-console.log(buts)
+showEven = even[0]
+showOdd = odd[0]
+showAll = all[0]
+
+
+console.log(showEven)
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
@@ -65,20 +73,65 @@ navArray.forEach((link) => {
   link.addEventListener('click', nav)
 })
 
-buts.forEach((button) => {
-  button.addEventListener('mouseover', () => {
-    gsap.to("button", {
+
+// buts.forEach((button) => {
+//   button.addEventListener('mouseover', () => {
+//     gsap.to("button", {
+//       backgroundColor:"green",
+//       duration: .1
+//     })
+//   })
+// })
+
+// buts.forEach((button) => {
+//   button.addEventListener('mouseout', () => {
+//     gsap.to("button", {
+//       backgroundColor:"red",
+//       duration: .1
+//     })
+//   })
+// })
+
+
+
+  showEven.addEventListener('mouseover', () => {
+    gsap.to(".show-even", {
       backgroundColor:"green",
       duration: .1
     })
   })
-})
 
-buts.forEach((button) => {
-  button.addEventListener('mouseout', () => {
-    gsap.to("button", {
-      backgroundColor:"red",
+  showEven.addEventListener('mouseout', () => {
+    gsap.to(".show-even", {
+      backgroundColor:"rgb(72, 69, 83)",
       duration: .1
     })
   })
-})
+
+  showOdd.addEventListener('mouseover', () => {
+    gsap.to(".show-odd", {
+      backgroundColor:"green",
+      duration: .1
+    })
+  })
+
+  showOdd.addEventListener('mouseout', () => {
+    gsap.to(".show-odd", {
+      backgroundColor:"rgb(72, 69, 83)",
+      duration: .1
+    })
+  })
+
+  showAll.addEventListener('mouseover', () => {
+    gsap.to(".show-all", {
+      backgroundColor:"green",
+      duration: .1
+    })
+  })
+
+  showAll.addEventListener('mouseout', () => {
+    gsap.to(".show-all", {
+      backgroundColor:"rgb(253, 236, 202)",
+      duration: .1
+    })
+  })

@@ -1,5 +1,6 @@
 //========DOM ELEMENTS======================================================================================
 const buttons = document.querySelectorAll('.btn-group')
+const buts = document.querySelectorAll('.but')
 const oddBoxes = document.querySelectorAll('.odd')
 const evenBoxes = document.querySelectorAll('.even')
 const homeAway = document.querySelectorAll('.nav-links')
@@ -8,7 +9,7 @@ const homeAway = document.querySelectorAll('.nav-links')
 const arrayButtons = Array.from(buttons[0].children)
 const navArray = Array.from(homeAway[0].children)
 
-
+console.log(buts)
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
@@ -64,7 +65,7 @@ navArray.forEach((link) => {
   link.addEventListener('click', nav)
 })
 
-arrayButtons.forEach((button) => {
+buts.forEach((button) => {
   button.addEventListener('mouseover', () => {
     gsap.to("button", {
       backgroundColor:"green",
@@ -73,7 +74,7 @@ arrayButtons.forEach((button) => {
   })
 })
 
-arrayButtons.forEach((button) => {
+buts.forEach((button) => {
   button.addEventListener('mouseout', () => {
     gsap.to("button", {
       backgroundColor:"red",

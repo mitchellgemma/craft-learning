@@ -9,7 +9,6 @@ const arrayButtons = Array.from(buttons[0].children)
 const navArray = Array.from(homeAway[0].children)
 
 
-
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
@@ -51,10 +50,34 @@ const nav = (e) => {
   }
 }
 
+// hover = gsap.to(".btn-group", .75, {
+//   rotation: 360,
+//   color: "green",
+//   duration: 1,
+// })
+
 //========EVENT LISTENERS===================================================================================
 arrayButtons.forEach((btn) => {
   btn.addEventListener('click', clickButton)
 })
 navArray.forEach((link) => {
   link.addEventListener('click', nav)
+})
+
+arrayButtons.forEach((button) => {
+  button.addEventListener('mouseover', () => {
+    gsap.to("button", {
+      backgroundColor:"green",
+      duration: .1
+    })
+  })
+})
+
+arrayButtons.forEach((button) => {
+  button.addEventListener('mouseout', () => {
+    gsap.to("button", {
+      backgroundColor:"red",
+      duration: .1
+    })
+  })
 })

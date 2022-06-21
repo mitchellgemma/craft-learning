@@ -1,12 +1,14 @@
 //========DOM ELEMENTS======================================================================================
 const buttons = document.querySelectorAll('.btn-group')
-const buts = document.querySelectorAll('.but')
 const oddBoxes = document.querySelectorAll('.odd')
 const evenBoxes = document.querySelectorAll('.even')
 const even = document.querySelectorAll('.show-even')
 const odd = document.querySelectorAll('.show-odd')
 const all = document.querySelectorAll('.show-all')
 const homeAway = document.querySelectorAll('.nav-links')
+const cards = document.querySelectorAll('.card')
+const btns = document.querySelectorAll('.but')
+
 
 // elements to add event listeners to
 const arrayButtons = Array.from(buttons[0].children)
@@ -16,6 +18,7 @@ showEven = even[0]
 showOdd = odd[0]
 showAll = all[0]
 
+console.log(cards)
 
 //========FUNCTIONS======================================================================================
 
@@ -70,66 +73,23 @@ navArray.forEach((link) => {
 //==============================================================================
 // This is grouping all of the buttons together - not sure why
 
-// buts.forEach((button) => {
-//     button.addEventListener('mouseover', () => {
-//          console.log(button)
-//         gsap.to("button", {
-//             backgroundColor:"green",
-//             duration: .1
-//           })
-//         })
-//       })
+btns.forEach((button) => {
+    button.addEventListener('mouseover', () => {
+        gsap.to(button, {
+            backgroundColor:"rgb(72, 69, 83)",
+            duration: .1
+          })
+        })
+      })
       
-// buts.forEach((button) => {
-//     button.addEventListener('mouseout', () => {
-//         gsap.to("button", {
-//             backgroundColor:"red",
-//             duration: .1
-//           })
-//         })
-//       })
+btns.forEach((button) => {
+    button.addEventListener('mouseout', () => {
+        gsap.to(button, {
+            backgroundColor:"#646072",
+            duration: .1
+          })
+        })
+      })
 
-//==============================================================================
-// Event listeners for the hover effect on buttons - using a for each does not make the buttons work independently
-
-  showEven.addEventListener('mouseover', () => {
-    gsap.to(".show-even", {
-      backgroundColor:"rgb(72, 69, 83)",
-      duration: .1
-    })
-  })
-
-  showEven.addEventListener('mouseout', () => {
-    gsap.to(".show-even", {
-      backgroundColor:"#646072",
-      duration: .1
-    })
-  })
-
-  showOdd.addEventListener('mouseover', () => {
-    gsap.to(".show-odd", {
-      backgroundColor:"rgb(72, 69, 83)",
-      duration: .1
-    })
-  })
-
-  showOdd.addEventListener('mouseout', () => {
-    gsap.to(".show-odd", {
-      backgroundColor:"#646072",
-      duration: .1
-    })
-  })
-
-  showAll.addEventListener('mouseover', () => {
-    gsap.to(".show-all", {
-      backgroundColor:"rgb(72, 69, 83)",
-      duration: .1
-    })
-  })
-
-  showAll.addEventListener('mouseout', () => {
-    gsap.to(".show-all", {
-      backgroundColor:"rgb(253, 236, 202)",
-      duration: .1
-    })
-  })
+  // =======================================================================================
+  // event listeners for boxes

@@ -119,29 +119,32 @@ cards.forEach((card) => {
   // SCROLL TRIGGER
 gsap.registerPlugin(ScrollTrigger);
 
-// cards.forEach((card) => {
-
-//   gsap.to(card, {
-//     scrollTrigger: {
-//       trigger:".card",
-//       start: "top 300px",
-//       // end: "+=200px",
-//       markers: true,
-//       scrub: 1
-//     },
-//     rotation:360,
-//     stagger: .1
-//   })
-// })
-
-
 ScrollTrigger.batch(cards, {
-  interval: .5,
-  start: "top, 85%",
+  // interval: .5,
+  // start: "top, 85%",
   onEnter: card => gsap.to(card,
-     {
-      autoAlpha: 1,
+    {
+      opacity: 1,
       stagger: .15,
-      duration: .1
+      duration: .1,
+      overwrite: true
+    }),
+    onLeave: card => gsap.to(card, {
+      opacity: 0,
+      stagger: .15,
+      duration: .1,
+      overwrite: true
+    }),
+    onEnterBack: card => gsap.to(card, {
+      opacity: 1,
+      stagger: .15,
+      duration: .1,
+      overwrite: true
+    }),
+    onLeaveBack: card => gsap.to(card, {
+      opacity: 0,
+      stagger: .15,
+      duration: .1,
+      overwrite: true
     })
 })

@@ -105,11 +105,43 @@ cards.forEach((card) => {
   .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
   .to(title, {color: 'black', duration: .05})
   .from(subtext, {opacity:0, ease: Power4.easeOut, duration: .5}, ">")
-  .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .05}, ">")
+  .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .01}, ">")
+
   card.addEventListener('mouseover', () => {
     cardHover.play()
   })
   card.addEventListener('mouseleave', () => {
     cardHover.reverse()
   })
+})
+
+  // =======================================================================================
+  // SCROLL TRIGGER
+gsap.registerPlugin(ScrollTrigger);
+
+// cards.forEach((card) => {
+
+//   gsap.to(card, {
+//     scrollTrigger: {
+//       trigger:".card",
+//       start: "top 300px",
+//       // end: "+=200px",
+//       markers: true,
+//       scrub: 1
+//     },
+//     rotation:360,
+//     stagger: .1
+//   })
+// })
+
+
+ScrollTrigger.batch(cards, {
+  interval: .5,
+  start: "top, 85%",
+  onEnter: card => gsap.to(card,
+     {
+      autoAlpha: 1,
+      stagger: .15,
+      duration: .1
+    })
 })

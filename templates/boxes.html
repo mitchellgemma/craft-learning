@@ -1,11 +1,11 @@
 {% set boxes = entry.boxes.all() %}
             
 {% for box in boxes %}
-<div class= "card">
+<div class="card">
     
-    <div>
+    <div class="box">
         <h2 class="card-title">{{ box.boxTitle  | upper }}</h2>
-        <h4>{{ box.boxSubtext | lower }}</h4>
+        <h4>{{ box.boxSubtext | upper }}</h4>
     </div>
     <div class="btn-group">
         <a href= {{ box.buttonUrl }}>

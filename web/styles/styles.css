@@ -46,6 +46,7 @@ html {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   position: relative;
   transition: all 0.5s ease;
+  opacity: 0;
 }
 @media (max-width: 768px) {
   .card {
@@ -83,6 +84,11 @@ html {
 .card-btn {
   opacity: 0;
   margin-bottom: 3%;
+}
+
+.filler {
+  height: 5000px;
+  width: 100%;
 }
 
 .header-container {

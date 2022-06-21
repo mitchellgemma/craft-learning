@@ -102,10 +102,10 @@ cards.forEach((card) => {
   const cardButton = card.querySelector("button")
   const cardHover =
   gsap.timeline({paused: true})
-  .to(card, {y: -15, duration: .1, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
-  .to(title, {color: 'black', duration: 1})
-  .from(subtext, {opacity:0, ease: 'back'}, ">")
-  .to(cardButton, { y: -10, opacity: 1, ease: 'back', duration: 1}, ">")
+  .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
+  .to(title, {color: 'black', duration: .05})
+  .from(subtext, {opacity:0, ease: Power4.easeOut, duration: .5}, ">")
+  .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .05}, ">")
   card.addEventListener('mouseover', () => {
     cardHover.play()
   })

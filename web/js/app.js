@@ -71,7 +71,6 @@ navArray.forEach((link) => {
 
 
 //==============================================================================
-// This is grouping all of the buttons together - not sure why
 
 btns.forEach((button) => {
     button.addEventListener('mouseover', () => {
@@ -102,10 +101,10 @@ cards.forEach((card) => {
   const cardButton = card.querySelector("button")
   const cardHover =
   gsap.timeline({paused: true})
-  .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
-  .to(title, {color: 'black', duration: .05})
-  .from(subtext, {opacity:0, ease: Power4.easeOut, duration: .5}, ">")
-  .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .01}, ">")
+    .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
+    .to(title, {color: 'black', duration: .05})
+    .from(subtext, {opacity: 0, ease: Power4.easeOut, duration: .5}, ">")
+    .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .01}, ">")
 
   card.addEventListener('mouseover', () => {
     cardHover.play()

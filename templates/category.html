@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
   <header>
-     {# <div class="header-container" style="background-image: url({{ category.pageBackground.one().url }})"> #}
+      <div class="header-container" style="background-image: url({{ category.pageBackground.one().url }})">
         <div class="navbar">
             <h3 class="nav-logo"><span id="logo">LOGO</span><span id="design">DESIGN</span></h3>
             <div class="nav-links">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="title">
-             <h1 class="header-title">Hello World</h1>
+             <h1 class="header-title">{{category.pageTitle}}</h1>
             <h4 class="description">{{ category.pageDescription }}</h6>
         </div>
         <div class="btn-group">
@@ -27,14 +27,13 @@
     </div>
 </div>
 </header>
-<body>
     <div class="cards-container">
         
      <!-- {% set boxes = craft.entries()
             .section('boxes').limit(3).all %} -->
             <!-- Above and below serve the same purpose, just different ways to do it -->
 
-        {% set entries = craft.entries()
+        {% set entries = craft.entries().section('boxes')
             .relatedTo(category)
             .all() %}
 
@@ -57,6 +56,4 @@
         </div>
     
     </div>
-    <script src="./js/app.js"></script>
-</body>
 {% endblock %}

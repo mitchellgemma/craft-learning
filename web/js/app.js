@@ -17,7 +17,6 @@ showOdd = odd[0]
 showAll = all[0]
 
 
-console.log(showEven)
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
@@ -59,12 +58,6 @@ const nav = (e) => {
   }
 }
 
-// hover = gsap.to(".btn-group", .75, {
-//   rotation: 360,
-//   color: "green",
-//   duration: 1,
-// })
-
 //========EVENT LISTENERS===================================================================================
 arrayButtons.forEach((btn) => {
   btn.addEventListener('click', clickButton)
@@ -74,57 +67,62 @@ navArray.forEach((link) => {
 })
 
 
-// buts.forEach((button) => {
-//   button.addEventListener('mouseover', () => {
-//     gsap.to("button", {
-//       backgroundColor:"green",
-//       duration: .1
-//     })
-//   })
-// })
+//==============================================================================
+// This is grouping all of the buttons together - not sure why
 
 // buts.forEach((button) => {
-//   button.addEventListener('mouseout', () => {
-//     gsap.to("button", {
-//       backgroundColor:"red",
-//       duration: .1
-//     })
-//   })
-// })
+//     button.addEventListener('mouseover', () => {
+//          console.log(button)
+//         gsap.to("button", {
+//             backgroundColor:"green",
+//             duration: .1
+//           })
+//         })
+//       })
+      
+// buts.forEach((button) => {
+//     button.addEventListener('mouseout', () => {
+//         gsap.to("button", {
+//             backgroundColor:"red",
+//             duration: .1
+//           })
+//         })
+//       })
 
-
+//==============================================================================
+// Event listeners for the hover effect on buttons - using a for each does not make the buttons work independently
 
   showEven.addEventListener('mouseover', () => {
     gsap.to(".show-even", {
-      backgroundColor:"green",
+      backgroundColor:"rgb(72, 69, 83)",
       duration: .1
     })
   })
 
   showEven.addEventListener('mouseout', () => {
     gsap.to(".show-even", {
-      backgroundColor:"rgb(72, 69, 83)",
+      backgroundColor:"#646072",
       duration: .1
     })
   })
 
   showOdd.addEventListener('mouseover', () => {
     gsap.to(".show-odd", {
-      backgroundColor:"green",
+      backgroundColor:"rgb(72, 69, 83)",
       duration: .1
     })
   })
 
   showOdd.addEventListener('mouseout', () => {
     gsap.to(".show-odd", {
-      backgroundColor:"rgb(72, 69, 83)",
+      backgroundColor:"#646072",
       duration: .1
     })
   })
 
   showAll.addEventListener('mouseover', () => {
     gsap.to(".show-all", {
-      backgroundColor:"green",
+      backgroundColor:"rgb(72, 69, 83)",
       duration: .1
     })
   })

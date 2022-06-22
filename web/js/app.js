@@ -8,20 +8,20 @@ const all = document.querySelectorAll('.show-all')
 const homeAway = document.querySelectorAll('.nav-links')
 const cards = document.querySelectorAll('.card')
 const btns = document.querySelectorAll('.but')
-
+const checkedButton = document.querySelector('.checked')
 
 // elements to add event listeners to
 const arrayButtons = [...buttons[0].children]
 const navArray = [...homeAway[0].children]
 
-
+console.log(checkedButton)
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
 const clickButton = (e) => {
   console.log(e.target)
   // if the target does not have an id, find the element with 'checked' id and remove it
-  if (!e.target.class) {
+  if (e.target.class) {
 
     document.querySelector('.checked').classList.remove('checked')
     // give the new element the class 'checked
@@ -56,13 +56,21 @@ btns.forEach((button) => {
       
 btns.forEach((button) => {
     button.addEventListener('mouseout', () => {
-        gsap.to(button, {
+        gsap.to(button, 
+          {         
             backgroundColor:"#646072",
             duration: .1
           })
         })
       })
 
+checkedButton.addEventListener('mouseout', () => {
+  gsap.to(checkedButton, 
+    {         
+      backgroundColor:"rgb(253, 236, 202)",
+      duration: .1
+    })
+})
   // =======================================================================================
   // event listeners for boxes
     // work on .play() and .reverse() after it is all working

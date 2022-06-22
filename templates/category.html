@@ -15,13 +15,13 @@
         </div>
         <div class="btn-group">
             <a href = "https://bonfire-craft.nitro/">
-                <button id="checked" class="show-all">SHOW ALL</button>
+                <button class="show-all but">SHOW ALL</button>
             </a>
             <a href = "https://bonfire-craft.nitro/type-of-number/even">
-                <button class="show-even">SHOW EVEN</button>
+                <button class="show-even but {{ category.slug == "even" ? "checked" : "none" }}">SHOW EVEN</button>
             </a>
             <a href = "https://bonfire-craft.nitro/type-of-number/odd">
-                <button class="show-odd">SHOW ODD</button>
+                <button class="show-odd but {{ category.slug == "odd" ? "checked" : "none" }}">SHOW ODD</button>
             </a>
         </div>
     </div>
@@ -44,9 +44,9 @@
                 <h2>{{ entry.boxTitle }}</h2>
                 <h4>{{ entry.boxSubtext }}</h4>
             </div>
-            <div class="btn-group card-btn">
+            <div class="btn-group">
                 <a href="#">
-                    <button>{{ entry.boxButton }}</button>
+                    <button class="card-btn">{{ entry.boxButton }}</button>
                 </a>
             </div>
         </div>

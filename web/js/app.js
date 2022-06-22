@@ -14,7 +14,6 @@ const checkedButton = document.querySelector('.checked')
 const arrayButtons = [...buttons[0].children]
 const navArray = [...homeAway[0].children]
 
-console.log(checkedButton)
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take

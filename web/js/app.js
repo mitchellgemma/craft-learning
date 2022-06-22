@@ -11,24 +11,21 @@ const btns = document.querySelectorAll('.but')
 
 
 // elements to add event listeners to
-const arrayButtons = Array.from(buttons[0].children)
-const navArray = Array.from(homeAway[0].children)
+const arrayButtons = [...buttons[0].children]
+const navArray = [...homeAway[0].children]
 
-showEven = even[0]
-showOdd = odd[0]
-showAll = all[0]
-
-console.log(cards)
 
 //========FUNCTIONS======================================================================================
 
 // Click function to be added to the boxes buttons to decide which action to take
 const clickButton = (e) => {
+  console.log(e.target)
   // if the target does not have an id, find the element with 'checked' id and remove it
-  if (!e.target.id) {
-    document.getElementById('checked').removeAttribute('id')
+  if (!e.target.class) {
+
+    document.getElementById('checked').classList.remove('checked')
     // give the new element the id 'checked
-    e.target.id = 'checked'
+    e.target.classList = 'checked'
   }
   // if user clicks on show even button, displays will be changed accordingly
   // for (let i = 0; i < oddBoxes.length; i++) {
@@ -124,7 +121,6 @@ gsap.registerPlugin(ScrollTrigger);
 // Only plays once but works with all animations
   ScrollTrigger.batch(cards, {
     start: "center 85%",
-    end: "center 15%",
 
     onEnter: card => gsap.to(card, {autoAlpha: 1, stagger: 0.1}),
   });

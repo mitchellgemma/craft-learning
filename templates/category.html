@@ -15,7 +15,7 @@
         </div>
         <div class="btn-group">
             <a href = "https://bonfire-craft.nitro/">
-                <button id="checked" class="show-all but">SHOW ALL</button>
+                <button class="show-all but">SHOW ALL</button>
             </a>
             <a href = "https://bonfire-craft.nitro/type-of-number/even">
                 <button class="show-even but">SHOW EVEN</button>
@@ -29,18 +29,16 @@
 </header>
     <div class="cards-container">
         
-     <!-- {% set boxes = craft.entries()
+     {# <!-- {% set boxes = craft.entries()
             .section('boxes').limit(3).all %} -->
-            <!-- Above and below serve the same purpose, just different ways to do it -->
-
+            <!-- Above and below serve the same purpose, just different ways to do it --> #}
+        {# QUERY to get all of the categories related to the slug #}
         {% set entries = craft.entries().section('boxes')
             .relatedTo(category)
             .all() %}
 
-
         {% for entry in entries %}
         <div class= "card">
-
             <div>
                 <h2>{{ entry.boxTitle }}</h2>
                 <h4>{{ entry.boxSubtext }}</h4>
@@ -52,8 +50,6 @@
             </div>
         </div>
         {% endfor %}
-
         </div>
-    
     </div>
 {% endblock %}

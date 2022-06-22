@@ -1,0 +1,27 @@
+columnSuffix: wakgavzc
+contentColumnType: text
+fieldGroup: 3b57a8ca-84c1-43dd-a601-b217ec298535 # Blog
+handle: blogContent
+instructions: null
+name: 'Blog Content'
+searchable: false
+settings:
+  availableTransforms: '*'
+  availableVolumes: '*'
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: null
+  purifyHtml: true
+  redactorConfig: null
+  removeEmptyTags: false
+  removeInlineStyles: false
+  removeNbsp: false
+  showHtmlButtonForNonAdmins: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: none
+type: craft\redactor\Field

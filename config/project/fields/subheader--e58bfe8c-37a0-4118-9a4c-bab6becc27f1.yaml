@@ -1,0 +1,19 @@
+columnSuffix: xtctzuun
+contentColumnType: text
+fieldGroup: 3b57a8ca-84c1-43dd-a601-b217ec298535 # Blog
+handle: subheader
+instructions: null
+name: Subheader
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

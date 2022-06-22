@@ -36,26 +36,6 @@
             .section('boxes').limit(3).all %} -->
             <!-- Above and below serve the same purpose, just different ways to do it -->
 
-        {% set entries = craft.entries()
-            .relatedTo(category)
-            .all() %}
-
-
-        {% for entry in entries %}
-        <div class= "card">
-            <div>
-                <h2>{{ entry.boxTitle }}</h2>
-                <h4>{{ entry.boxSubtext }}</h4>
-            </div>
-            <div class="btn-group">
-                <a href="#">
-                    <button class="card-btn but">{{ entry.boxButton }}</button>
-                </a>
-            </div>
-        </div>
-        {% endfor %}
-
-        </div>
-
+        {% include "categoryboxes.html" %}
     </div>
 {% endblock %}

@@ -98,7 +98,7 @@ cards.forEach((card) => {
   // defining this inside of the function limits it to only elements within that element
   const title = card.querySelector(".card-title")
   const subtext = card.querySelector("h4")
-  const cardButton = card.querySelector("button")
+  const cardButton = card.querySelector(".card-btn")
   const cardHover =
   gsap.timeline({paused: true})
   .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})

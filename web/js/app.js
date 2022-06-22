@@ -124,11 +124,9 @@ gsap.registerPlugin(ScrollTrigger);
 // Only plays once but works with all animations
   ScrollTrigger.batch(cards, {
     start: "center 85%",
-    // interval: 0.1, // time window (in seconds) for batching to occur. 
-    // batchMax: 3,   // maximum batch size (targets)
-    onEnter: batch => gsap.to(batch, {autoAlpha: 1, stagger: 0.1}),
-    // also onLeave, onEnterBack, and onLeaveBack
-    // also most normal ScrollTrigger values like start, end, etc.
+    end: "center 15%",
+
+    onEnter: card => gsap.to(card, {autoAlpha: 1, stagger: 0.1}),
   });
 
 

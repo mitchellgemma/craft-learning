@@ -101,10 +101,10 @@ cards.forEach((card) => {
   const cardButton = card.querySelector("button")
   const cardHover =
   gsap.timeline({paused: true})
-    .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
-    .to(title, {color: 'black', duration: .05})
-    .from(subtext, {opacity: 0, ease: Power4.easeOut, duration: .5}, ">")
-    .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .01}, ">")
+  .to(card, {y: -15, duration: .05, boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'})
+  .to(title, {color: 'black', duration: .05})
+  .from(subtext, {opacity: 0, ease: Power4.easeOut, duration: .5}, ">")
+  .to(cardButton, {opacity: 1, ease: Power4.easeOut, duration: .01}, ">")
 
   card.addEventListener('mouseover', () => {
     cardHover.play()
@@ -116,34 +116,48 @@ cards.forEach((card) => {
 
   // =======================================================================================
   // SCROLL TRIGGER
+
+// Not completely finished -- other scrollTrigger is causing the hover animation to not work
+
 gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.batch(cards, {
-  // interval: .5,
-  // start: "top, 85%",
-  onEnter: card => gsap.to(card,
-    {
-      opacity: 1,
-      stagger: .15,
-      duration: .1,
-      overwrite: true
-    }),
-    onLeave: card => gsap.to(card, {
-      opacity: 0,
-      stagger: .15,
-      duration: .1,
-      overwrite: true
-    }),
-    onEnterBack: card => gsap.to(card, {
-      opacity: 1,
-      stagger: .15,
-      duration: .1,
-      overwrite: true
-    }),
-    onLeaveBack: card => gsap.to(card, {
-      opacity: 0,
-      stagger: .15,
-      duration: .1,
-      overwrite: true
-    })
-})
+// Only plays once but works with all animations
+  ScrollTrigger.batch(cards, {
+    // interval: 0.1, // time window (in seconds) for batching to occur. 
+    // batchMax: 3,   // maximum batch size (targets)
+    onEnter: batch => gsap.to(batch, {autoAlpha: 1, stagger: 0.1}),
+    // also onLeave, onEnterBack, and onLeaveBack
+    // also most normal ScrollTrigger values like start, end, etc.
+  });
+
+
+
+// ScrollTrigger.batch(cards, {
+//   // interval: .5,
+//   // start: "top, 85%",
+//   onEnter: card => gsap.to(card,
+//     {
+//       opacity: 1,
+//       stagger: .2,
+//       duration: .2,
+//       overwrite: true,
+//     }),
+//     onLeave: card => gsap.to(card, {
+//       opacity: 0,
+//       stagger: .2,
+//       duration: .1,
+//       overwrite: true,
+//     }),
+//     onEnterBack: card => gsap.to(card, {
+//       opacity: 1,
+//       stagger: .2,
+//       duration: .2,
+//       overwrite: true,
+//     }),
+//     onLeaveBack: card => gsap.to(card, {
+//       opacity: 0,
+//       stagger: .2,
+//       duration: .2,
+//       overwrite: true,
+//     })
+// })

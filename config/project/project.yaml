@@ -1,4 +1,4 @@
-dateModified: 1655920191
+dateModified: 1656340740
 email:
   fromEmail: mitch@hellobonfire.com
   fromName: 'Bonfire Craft'
@@ -57,6 +57,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  twigpack:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
 system:
   edition: solo
   live: true

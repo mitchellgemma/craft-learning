@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded', (event) => {
+
 //========DOM ELEMENTS======================================================================================
 const buttons = document.querySelectorAll('.btn-group')
 const oddBoxes = document.querySelectorAll('.odd')
@@ -26,7 +28,6 @@ const clickButton = (e) => {
     // give the new element the class 'checked
     e.target.classList = 'checked'
   }
-
 }
 // Simple function to flip the colors of the nav bar links
 const nav = (e) => {
@@ -139,3 +140,4 @@ gsap.registerPlugin(ScrollTrigger);
 //       overwrite: true,
 //     })
 // })
+})

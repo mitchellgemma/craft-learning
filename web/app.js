@@ -19,142 +19,144 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//========DOM ELEMENTS======================================================================================
-var buttons = document.querySelectorAll('.btn-group');
-var oddBoxes = document.querySelectorAll('.odd');
-var evenBoxes = document.querySelectorAll('.even');
-var even = document.querySelectorAll('.show-even');
-var odd = document.querySelectorAll('.show-odd');
-var all = document.querySelectorAll('.show-all');
-var homeAway = document.querySelectorAll('.nav-links');
-var cards = document.querySelectorAll('.card');
-var btns = document.querySelectorAll('.but');
-var checkedButton = document.querySelector('.checked'); // elements to add event listeners to
+window.addEventListener('DOMContentLoaded', function (event) {
+  //========DOM ELEMENTS======================================================================================
+  var buttons = document.querySelectorAll('.btn-group');
+  var oddBoxes = document.querySelectorAll('.odd');
+  var evenBoxes = document.querySelectorAll('.even');
+  var even = document.querySelectorAll('.show-even');
+  var odd = document.querySelectorAll('.show-odd');
+  var all = document.querySelectorAll('.show-all');
+  var homeAway = document.querySelectorAll('.nav-links');
+  var cards = document.querySelectorAll('.card');
+  var btns = document.querySelectorAll('.but');
+  var checkedButton = document.querySelector('.checked'); // elements to add event listeners to
 
-var arrayButtons = _toConsumableArray(buttons[0].children);
+  var arrayButtons = _toConsumableArray(buttons[0].children);
 
-var navArray = _toConsumableArray(homeAway[0].children); //========FUNCTIONS======================================================================================
-// Click function to be added to the boxes buttons to decide which action to take
-
-
-var clickButton = function clickButton(e) {
-  console.log(e.target); // if the target does not have an id, find the element with 'checked' id and remove it
-
-  if (e.target["class"]) {
-    document.querySelector('.checked').classList.remove('checked'); // give the new element the class 'checked
-
-    e.target.classList = 'checked';
-  }
-}; // Simple function to flip the colors of the nav bar links
+  var navArray = _toConsumableArray(homeAway[0].children); //========FUNCTIONS======================================================================================
+  // Click function to be added to the boxes buttons to decide which action to take
 
 
-var nav = function nav(e) {}; //========EVENT LISTENERS===================================================================================
+  var clickButton = function clickButton(e) {
+    console.log(e.target); // if the target does not have an id, find the element with 'checked' id and remove it
+
+    if (e.target["class"]) {
+      document.querySelector('.checked').classList.remove('checked'); // give the new element the class 'checked
+
+      e.target.classList = 'checked';
+    }
+  }; // Simple function to flip the colors of the nav bar links
 
 
-arrayButtons.forEach(function (btn) {
-  btn.addEventListener('click', clickButton);
-});
-navArray.forEach(function (link) {
-  link.addEventListener('click', nav);
-}); //==============================================================================
+  var nav = function nav(e) {}; //========EVENT LISTENERS===================================================================================
 
-btns.forEach(function (button) {
-  button.addEventListener('mouseover', function () {
-    gsap.to(button, {
-      backgroundColor: "rgb(72, 69, 83)",
+
+  arrayButtons.forEach(function (btn) {
+    btn.addEventListener('click', clickButton);
+  });
+  navArray.forEach(function (link) {
+    link.addEventListener('click', nav);
+  }); //==============================================================================
+
+  btns.forEach(function (button) {
+    button.addEventListener('mouseover', function () {
+      gsap.to(button, {
+        backgroundColor: "rgb(72, 69, 83)",
+        duration: .1
+      });
+    });
+  });
+  btns.forEach(function (button) {
+    button.addEventListener('mouseout', function () {
+      gsap.to(button, {
+        backgroundColor: "#646072",
+        duration: .1
+      });
+    });
+  });
+  checkedButton.addEventListener('mouseout', function () {
+    gsap.to(checkedButton, {
+      backgroundColor: "rgb(253, 236, 202)",
       duration: .1
     });
-  });
-});
-btns.forEach(function (button) {
-  button.addEventListener('mouseout', function () {
-    gsap.to(button, {
-      backgroundColor: "#646072",
-      duration: .1
+  }); // =======================================================================================
+  // event listeners for boxes
+  // work on .play() and .reverse() after it is all working
+
+  cards.forEach(function (card) {
+    // defining this inside of the function limits it to only elements within that element
+    var title = card.querySelector(".card-title");
+    var subtext = card.querySelector("h4");
+    var cardButton = card.querySelector(".card-btn");
+    var cardHover = gsap.timeline({
+      paused: true
+    }).to(card, {
+      y: -15,
+      duration: .05,
+      boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'
+    }).to(title, {
+      color: 'black',
+      duration: .05
+    }).from(subtext, {
+      opacity: 0,
+      ease: Power4.easeOut,
+      duration: .5
+    }, ">").to(cardButton, {
+      opacity: 1,
+      ease: Power4.easeOut,
+      duration: .01
+    }, ">");
+    card.addEventListener('mouseover', function () {
+      cardHover.play();
     });
-  });
-});
-checkedButton.addEventListener('mouseout', function () {
-  gsap.to(checkedButton, {
-    backgroundColor: "rgb(253, 236, 202)",
-    duration: .1
-  });
-}); // =======================================================================================
-// event listeners for boxes
-// work on .play() and .reverse() after it is all working
-
-cards.forEach(function (card) {
-  // defining this inside of the function limits it to only elements within that element
-  var title = card.querySelector(".card-title");
-  var subtext = card.querySelector("h4");
-  var cardButton = card.querySelector(".card-btn");
-  var cardHover = gsap.timeline({
-    paused: true
-  }).to(card, {
-    y: -15,
-    duration: .05,
-    boxShadow: '0px 2px 18px 0px rgba(11, 11, 11, 0.56)'
-  }).to(title, {
-    color: 'black',
-    duration: .05
-  }).from(subtext, {
-    opacity: 0,
-    ease: Power4.easeOut,
-    duration: .5
-  }, ">").to(cardButton, {
-    opacity: 1,
-    ease: Power4.easeOut,
-    duration: .01
-  }, ">");
-  card.addEventListener('mouseover', function () {
-    cardHover.play();
-  });
-  card.addEventListener('mouseleave', function () {
-    cardHover.reverse();
-  });
-}); // =======================================================================================
-// SCROLL TRIGGER
-// Not completely finished -- other scrollTrigger is causing the hover animation to not work
-
-gsap.registerPlugin(ScrollTrigger); // Only plays once but works with all animations
-
-ScrollTrigger.batch(cards, {
-  start: "top 95%",
-  onEnter: function onEnter(card) {
-    return gsap.to(card, {
-      autoAlpha: 1,
-      stagger: 0.1
+    card.addEventListener('mouseleave', function () {
+      cardHover.reverse();
     });
-  }
-}); // ScrollTrigger.batch(cards, {
-//   // interval: .5,
-//   // start: "top, 85%",
-//   onEnter: card => gsap.to(card,
-//     {
-//       opacity: 1,
-//       stagger: .2,
-//       duration: .2,
-//       overwrite: true,
-//     }),
-//     onLeave: card => gsap.to(card, {
-//       opacity: 0,
-//       stagger: .2,
-//       duration: .1,
-//       overwrite: true,
-//     }),
-//     onEnterBack: card => gsap.to(card, {
-//       opacity: 1,
-//       stagger: .2,
-//       duration: .2,
-//       overwrite: true,
-//     }),
-//     onLeaveBack: card => gsap.to(card, {
-//       opacity: 0,
-//       stagger: .2,
-//       duration: .2,
-//       overwrite: true,
-//     })
-// })
+  }); // =======================================================================================
+  // SCROLL TRIGGER
+  // Not completely finished -- other scrollTrigger is causing the hover animation to not work
+
+  gsap.registerPlugin(ScrollTrigger); // Only plays once but works with all animations
+
+  ScrollTrigger.batch(cards, {
+    start: "top 95%",
+    onEnter: function onEnter(card) {
+      return gsap.to(card, {
+        autoAlpha: 1,
+        stagger: 0.1
+      });
+    }
+  }); // ScrollTrigger.batch(cards, {
+  //   // interval: .5,
+  //   // start: "top, 85%",
+  //   onEnter: card => gsap.to(card,
+  //     {
+  //       opacity: 1,
+  //       stagger: .2,
+  //       duration: .2,
+  //       overwrite: true,
+  //     }),
+  //     onLeave: card => gsap.to(card, {
+  //       opacity: 0,
+  //       stagger: .2,
+  //       duration: .1,
+  //       overwrite: true,
+  //     }),
+  //     onEnterBack: card => gsap.to(card, {
+  //       opacity: 1,
+  //       stagger: .2,
+  //       duration: .2,
+  //       overwrite: true,
+  //     }),
+  //     onLeaveBack: card => gsap.to(card, {
+  //       opacity: 0,
+  //       stagger: .2,
+  //       duration: .2,
+  //       overwrite: true,
+  //     })
+  // })
+});
 
 /***/ }),
 
@@ -270,9 +272,9 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/web/app": 0,
-/******/ 			"web/styles": 0,
-/******/ 			"web/variables": 0
+/******/ 			"/app": 0,
+/******/ 			"styles": 0,
+/******/ 			"variables": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -322,9 +324,9 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["web/styles","web/variables"], () => (__webpack_require__("./web/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["web/styles","web/variables"], () => (__webpack_require__("./web/styles/variables.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["web/styles","web/variables"], () => (__webpack_require__("./web/styles/styles.scss")))
+/******/ 	__webpack_require__.O(undefined, ["styles","variables"], () => (__webpack_require__("./web/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["styles","variables"], () => (__webpack_require__("./web/styles/variables.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["styles","variables"], () => (__webpack_require__("./web/styles/styles.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

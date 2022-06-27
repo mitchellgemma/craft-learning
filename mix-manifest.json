@@ -1,5 +1,5 @@
 {
-    "/web/app.js": "/web/app.js",
-    "/web/styles.css": "/web/styles.css",
+    "/app.js": "/app.js",
+    "/styles.css": "/styles.css",
     "/web/variables.css": "/web/variables.css"
 }

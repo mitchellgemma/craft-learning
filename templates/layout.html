@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/">
     <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@500&family=Open+Sans:wght@300&family=Quantico&display=swap" rel="stylesheet">   
-    <link rel="stylesheet" href="./styles.css" />
+    {{ craft.twigpack.includeCssModule("/web/styles.css") }}
     <title>Bonfire Coding Challenge</title>
   </head>
   <body>
@@ -14,6 +14,6 @@
     {% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
-    <script src="./app.js"></script>
-  </body>
+    {{ craft.twigpack.includeJsModule("/web/app.js") }}  
+    </body>
   </html>

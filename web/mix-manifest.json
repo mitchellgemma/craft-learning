@@ -1,8 +1,4 @@
 {
-    "/app.js": "/app.js",
-    "/reactapp.js": "/reactapp.js",
     "/index.js": "/index.js",
-    "/box.js": "/box.js",
-    "/styles.css": "/styles.css",
-    "/variables.css": "/variables.css"
+    "/styles.css": "/styles.css"
 }

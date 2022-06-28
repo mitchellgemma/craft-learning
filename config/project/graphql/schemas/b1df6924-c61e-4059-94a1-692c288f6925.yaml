@@ -1,0 +1,20 @@
+isPublic: true
+name: 'Public Schema'
+scope:
+  - 'sites.c468402d-2f03-40e5-a951-1305998c8597:read' # Bonfire Craft
+  - 'elements.drafts:read'
+  - 'elements.revisions:read'
+  - 'elements.inactive:read'
+  - 'sections.043ad44f-4416-4a63-8c7d-2b28d78cf2e6:read' # Blog
+  - 'entrytypes.36199568-9491-4132-b644-51319dbef53b:read' # Blog
+  - 'sections.1097f618-43c7-44d3-865d-82f9543dc597:read' # Blog Entries
+  - 'entrytypes.f46f9039-171f-43f2-953d-5f2f7e4b49cf:read' # Default
+  - 'sections.77c9e69f-7628-4f93-9a54-cdfdb8009ac1:read' # Boxes
+  - 'entrytypes.742694d0-89a4-4d0c-bf6c-46bf262f060c:read' # Boxes
+  - 'sections.7054554a-3706-4536-b965-b0331a162a6c:read' # Home
+  - 'entrytypes.21eb0b24-b45a-4aa1-838d-1b6105cd7979:read' # Home
+  - 'volumes.9b0de38d-72b7-4341-b3de-a7870bc781bf:read' # Page Background
+  - 'usergroups.everyone:read'
+  - 'categorygroups.0cf3234f-22a2-4771-b52c-f3f2946bad24:read' # Type of Number
+  - 'navigationNavs.all:read'
+  - 'navigationNavs.6a634188-be38-46f4-a521-a891fdf7c331:read' # Main Navigation

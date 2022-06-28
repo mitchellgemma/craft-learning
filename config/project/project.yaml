@@ -1,4 +1,4 @@
-dateModified: 1656340740
+dateModified: 1656435055
 email:
   fromEmail: mitch@hellobonfire.com
   fromName: 'Bonfire Craft'
@@ -39,6 +39,7 @@ meta:
     36199568-9491-4132-b644-51319dbef53b: Blog # Blog
     a4ed7be9-7105-4e16-8351-4816b81c704f: 'Button Text' # Button Text
     a9516c1c-e914-43fa-9448-3ce930e339ac: 'Box URL' # Box URL
+    b1df6924-c61e-4059-94a1-692c288f6925: 'Public Schema' # Public Schema
     c468402d-2f03-40e5-a951-1305998c8597: 'Bonfire Craft' # Bonfire Craft
     d28e128e-1c93-466a-aa51-e63fde158210: 'Box Button' # Box Button
     e01820d5-d458-4b66-9686-e1c1c9f7788a: 'Box Subtext' # Box Subtext
@@ -62,7 +63,7 @@ plugins:
     enabled: true
     schemaVersion: 1.0.0
 system:
-  edition: solo
+  edition: pro
   live: true
   name: 'Bonfire Craft'
   schemaVersion: 4.0.0.9

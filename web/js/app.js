@@ -1,4 +1,3 @@
-window.addEventListener('DOMContentLoaded', (event) => {
 
 //========DOM ELEMENTS======================================================================================
 const buttons = document.querySelectorAll('.btn-group')
@@ -140,4 +139,3 @@ gsap.registerPlugin(ScrollTrigger);
 //       overwrite: true,
 //     })
 // })
-})

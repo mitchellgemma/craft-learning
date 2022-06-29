@@ -34,20 +34,22 @@ const Box = (props) => {
       );
   }, []);
 
-  return (
-    <div
+  if (data.boxTitle) {
+
+    return (
+      <div
       className="card"
       ref={el}
       onMouseEnter={() => tl.current.play()}
       onMouseLeave={() => tl.current.reverse()}
-    >
+      >
       <div className="box">
         <h2
           className="card-title"
           ref={title}
           onMouseEnter={() => tl.current.play()}
           onMouseLeave={() => tl.current.reverse()}
-        >
+          >
           {data.boxTitle}
         </h2>
         <h4
@@ -55,18 +57,18 @@ const Box = (props) => {
           ref={subtext}
           onMouseEnter={() => tl.current.play()}
           onMouseLeave={() => tl.current.reverse()}
-        >
+          >
           {data.boxSubtext}
         </h4>
       </div>
       <div className="btn-group">
-        <a>
+        <a href={data.buttonUrl}>
           <button
             className="card-btn but"
             ref={btn}
             onMouseEnter={() => tl.current.play()}
             onMouseLeave={() => tl.current.reverse()}
-          >
+            >
             {data.boxButton}
           </button>
         </a>
@@ -74,5 +76,6 @@ const Box = (props) => {
     </div>
   );
 };
+}
 
 export default Box;

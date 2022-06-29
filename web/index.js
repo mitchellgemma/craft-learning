@@ -116,55 +116,61 @@ var Box = function Box(props) {
       duration: 0.01
     }, '>');
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "card",
-    ref: el,
-    onMouseEnter: function onMouseEnter() {
-      return tl.current.play();
-    },
-    onMouseLeave: function onMouseLeave() {
-      return tl.current.reverse();
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "box",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-        className: "card-title",
-        ref: title,
-        onMouseEnter: function onMouseEnter() {
-          return tl.current.play();
-        },
-        onMouseLeave: function onMouseLeave() {
-          return tl.current.reverse();
-        },
-        children: data.boxTitle
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
-        className: "card-subtext",
-        ref: subtext,
-        onMouseEnter: function onMouseEnter() {
-          return tl.current.play();
-        },
-        onMouseLeave: function onMouseLeave() {
-          return tl.current.reverse();
-        },
-        children: data.boxSubtext
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "btn-group",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "card-btn but",
-          ref: btn,
+
+  if (data.boxTitle) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "card",
+      ref: el,
+      onMouseEnter: function onMouseEnter() {
+        return tl.current.play();
+      },
+      onMouseLeave: function onMouseLeave() {
+        return tl.current.reverse();
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "box",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+          className: "card-title",
+          ref: title,
           onMouseEnter: function onMouseEnter() {
             return tl.current.play();
           },
           onMouseLeave: function onMouseLeave() {
             return tl.current.reverse();
           },
-          children: data.boxButton
+          children: data.boxTitle
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+          className: "card-subtext",
+          ref: subtext,
+          onMouseEnter: function onMouseEnter() {
+            return tl.current.play();
+          },
+          onMouseLeave: function onMouseLeave() {
+            return tl.current.reverse();
+          },
+          children: data.boxSubtext
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "btn-group",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+          href: data.buttonUrl,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "card-btn but",
+            ref: btn,
+            onMouseEnter: function onMouseEnter() {
+              return tl.current.play();
+            },
+            onMouseLeave: function onMouseLeave() {
+              return tl.current.reverse();
+            },
+            children: data.boxButton
+          })
         })
-      })
-    })]
-  });
+      })]
+    });
+  }
+
+  ;
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Box);

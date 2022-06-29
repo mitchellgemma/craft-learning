@@ -43,7 +43,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var endpoint = 'https://bonfire-craft.nitro/api';
-var boxQuery = (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.gql)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  {\n    entries {\n      ... on boxes_boxes_Entry {\n        boxTitle\n        boxSubtext\n        boxCategory {\n          id\n        }\n        boxButton\n        buttonUrl\n      }\n    }\n  }\n"])));
+var boxQuery = (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.gql)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  {\n     entry(section: \"home\") {\n    ... on home_home_Entry {\n      boxes {\n        ... on boxes_boxes_Entry {\n        boxTitle\n        boxSubtext\n        boxCategory {\n          title\n        }\n        boxButton\n        buttonUrl\n      }\n      }\n    }\n  }\n}\n"])));
 
 var App = function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
@@ -53,7 +53,7 @@ var App = function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.request)(endpoint, boxQuery).then(function (res) {
-      return setData(res.entries);
+      return setData(res.entry.boxes);
     });
   }, []);
   return data.map(function (box) {
@@ -97,6 +97,7 @@ var Box = function Box(props) {
   var tl = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var data = props.data;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(data);
     tl.current = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
       paused: true
     }).to(el.current, {
@@ -206,7 +207,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-(0,react_dom__WEBPACK_IMPORTED_MODULE_2__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_1__["default"], {}), document.getElementById('react-cards')); //========DOM ELEMENTS======================================================================================
+(0,react_dom__WEBPACK_IMPORTED_MODULE_2__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_1__["default"], {}), document.querySelector('.react-cards')); //========DOM ELEMENTS======================================================================================
 
 var buttons = document.querySelectorAll('.btn-group');
 var oddBoxes = document.querySelectorAll('.odd');

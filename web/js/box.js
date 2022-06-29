@@ -14,6 +14,7 @@ const Box = (props) => {
   const { data } = props;
 
   useEffect(() => {
+    console.log(data)
     tl.current = gsap
       .timeline({ paused: true })
       .to(el.current, {
@@ -35,7 +36,6 @@ const Box = (props) => {
   }, []);
 
   if (data.boxTitle) {
-
     return (
       <div
       className="card"

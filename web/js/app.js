@@ -9,25 +9,29 @@ const endpoint = 'https://bonfire-craft.nitro/api';
 
 const boxQuery = gql`
   {
-    entries {
-      ... on boxes_boxes_Entry {
+     entry(section: "home") {
+    ... on home_home_Entry {
+      boxes {
+        ... on boxes_boxes_Entry {
         boxTitle
         boxSubtext
         boxCategory {
-          id
+          title
         }
         boxButton
         buttonUrl
       }
+      }
     }
   }
+}
 `;
 
 const App = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    request(endpoint, boxQuery).then((res) => setData(res.entries));
+    request(endpoint, boxQuery).then((res) => setData(res.entry.boxes));
   }, []);
 
   return (

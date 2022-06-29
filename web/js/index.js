@@ -2,7 +2,7 @@ import React from "react";
 import App from "./App";
 import { render } from 'react-dom';
 
-render(<App />, document.getElementById('react-cards'));
+render(<App />, document.querySelector('.react-cards'));
 
 //========DOM ELEMENTS======================================================================================
 const buttons = document.querySelectorAll('.btn-group')

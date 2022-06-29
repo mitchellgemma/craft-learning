@@ -30,4 +30,6 @@ return [
     'disallowRobots' => !$isProd,
 
     'enableGql' => true,
+
+    'enableGraphqlCaching' => false,
 ];

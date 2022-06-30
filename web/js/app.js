@@ -35,7 +35,18 @@ const boxQuery = gql`
 const App = () => {
   const url = window.location.href
   const [data, setData] = useState([]);
-  const [filter, setFilter] = useState('all')
+  const baseUrl = "https://bonfire-craft.nitro/"
+
+  const initialFilterState = () => {
+    if (url === baseUrl){
+      return 'all'
+    }else if (url === `${baseUrl}type-of-number/even`){
+      return 'even'
+    } else if (url === `${baseUrl}type-of-number/odd`){
+      return 'odd'
+    }
+  }
+  const [filter, setFilter] = useState(initialFilterState)
 
   const getFilteredData = () => {
     if (filter === 'all') {
@@ -48,28 +59,29 @@ const App = () => {
   }
 
   useEffect(() => {
+    console.log(filter)
     request(endpoint, boxQuery).then((res) => setData(res.entry.boxes))
       }, []);
   
-  useEffect(() => {
-   if (url === "https://bonfire-craft.nitro/"){
-      setFilter('all')
-    }else if (url === "https://bonfire-craft.nitro/type-of-number/even"){
-      setFilter('even')
-    } else{
-      setFilter('odd')
-    }
+  // useEffect(() => {
+  //  if (url === baseUrl){
+  //     setFilter('all')
+  //   }else if (url === `${baseUrl}type-of-number/even`){
+  //     setFilter('even')
+  //   } else if (url === `${baseUrl}type-of-number/odd`){
+  //     setFilter('odd')
+  //   }
     // allButton.addEventListener("click", showAll)
     // evenButton.addEventListener("click", showEven)
     // oddButton.addEventListener("click", showOdd)
     
     
-    return () => {
-      allButton.removeEventListener("click", showAll)
-      evenButton.removeEventListener("click", showEven)
-      oddButton.removeEventListener("click", showOdd)
-    }
-  }, [])
+    // return () => {
+    //   allButton.removeEventListener("click", showAll)
+    //   evenButton.removeEventListener("click", showEven)
+    //   oddButton.removeEventListener("click", showOdd)
+    // }
+  // }, [])
 
   if(!data){
     return (

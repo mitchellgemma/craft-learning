@@ -56,7 +56,19 @@ var App = function App() {
       data = _useState2[0],
       setData = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+  var baseUrl = "https://bonfire-craft.nitro/";
+
+  var initialFilterState = function initialFilterState() {
+    if (url === baseUrl) {
+      return 'all';
+    } else if (url === "".concat(baseUrl, "type-of-number/even")) {
+      return 'even';
+    } else if (url === "".concat(baseUrl, "type-of-number/odd")) {
+      return 'odd';
+    }
+  };
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilterState),
       _useState4 = _slicedToArray(_useState3, 2),
       filter = _useState4[0],
       setFilter = _useState4[1];
@@ -76,28 +88,27 @@ var App = function App() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(filter);
     (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.request)(endpoint, boxQuery).then(function (res) {
       return setData(res.entry.boxes);
     });
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (url === "https://bonfire-craft.nitro/") {
-      setFilter('all');
-    } else if (url === "https://bonfire-craft.nitro/type-of-number/even") {
-      setFilter('even');
-    } else {
-      setFilter('odd');
-    } // allButton.addEventListener("click", showAll)
-    // evenButton.addEventListener("click", showEven)
-    // oddButton.addEventListener("click", showOdd)
-
-
-    return function () {
-      allButton.removeEventListener("click", showAll);
-      evenButton.removeEventListener("click", showEven);
-      oddButton.removeEventListener("click", showOdd);
-    };
-  }, []);
+  }, []); // useEffect(() => {
+  //  if (url === baseUrl){
+  //     setFilter('all')
+  //   }else if (url === `${baseUrl}type-of-number/even`){
+  //     setFilter('even')
+  //   } else if (url === `${baseUrl}type-of-number/odd`){
+  //     setFilter('odd')
+  //   }
+  // allButton.addEventListener("click", showAll)
+  // evenButton.addEventListener("click", showEven)
+  // oddButton.addEventListener("click", showOdd)
+  // return () => {
+  //   allButton.removeEventListener("click", showAll)
+  //   evenButton.removeEventListener("click", showEven)
+  //   oddButton.removeEventListener("click", showOdd)
+  // }
+  // }, [])
 
   if (!data) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {

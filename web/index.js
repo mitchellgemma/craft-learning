@@ -81,27 +81,17 @@ var App = function App() {
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var showAll = function showAll(event) {
+    if (url === "https://bonfire-craft.nitro/") {
       setFilter('all');
-      document.querySelector('.checked').classList.remove('checked');
-      event.currentTarget.classList.add("checked");
-    };
-
-    var showEven = function showEven(event) {
+    } else if (url === "https://bonfire-craft.nitro/type-of-number/even") {
       setFilter('even');
-      document.querySelector('.checked').classList.remove('checked');
-      event.currentTarget.classList.add("checked");
-    };
-
-    var showOdd = function showOdd(event) {
+    } else {
       setFilter('odd');
-      event.currentTarget.classList.add("checked");
-      document.querySelector('.checked').classList.remove('checked');
-    };
+    } // allButton.addEventListener("click", showAll)
+    // evenButton.addEventListener("click", showEven)
+    // oddButton.addEventListener("click", showOdd)
 
-    allButton.addEventListener("click", showAll);
-    evenButton.addEventListener("click", showEven);
-    oddButton.addEventListener("click", showOdd);
+
     return function () {
       allButton.removeEventListener("click", showAll);
       evenButton.removeEventListener("click", showEven);

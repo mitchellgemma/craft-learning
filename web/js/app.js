@@ -52,24 +52,16 @@ const App = () => {
       }, []);
   
   useEffect(() => {
-    const showAll = (event) => {
+   if (url === "https://bonfire-craft.nitro/"){
       setFilter('all')
-      document.querySelector('.checked').classList.remove('checked')
-      event.currentTarget.classList.add("checked")
-    }
-    const showEven = (event) => {
+    }else if (url === "https://bonfire-craft.nitro/type-of-number/even"){
       setFilter('even')
-      document.querySelector('.checked').classList.remove('checked')
-      event.currentTarget.classList.add("checked")
-    }
-    const showOdd = (event) => {
+    } else{
       setFilter('odd')
-      event.currentTarget.classList.add("checked")
-      document.querySelector('.checked').classList.remove('checked')
     }
-    allButton.addEventListener("click", showAll)
-    evenButton.addEventListener("click", showEven)
-    oddButton.addEventListener("click", showOdd)
+    // allButton.addEventListener("click", showAll)
+    // evenButton.addEventListener("click", showEven)
+    // oddButton.addEventListener("click", showOdd)
     
     
     return () => {

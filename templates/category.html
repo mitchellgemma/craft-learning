@@ -17,13 +17,13 @@
             <h4 class="description">{{ category.pageDescription }}</h6>
         </div>
         <div class="btn-group">
-            <a href = "https://bonfire-craft.nitro/">
+            <a>
                 <button class="show-all but">SHOW ALL</button>
             </a>
-            <a href = "https://bonfire-craft.nitro/type-of-number/even">
+            <a href={{ category.url }}>
                 <button class="show-even but {{ category.slug == "even" ? "checked" : "none" }}">SHOW EVEN</button>
             </a>
-            <a href = "https://bonfire-craft.nitro/type-of-number/odd">
+            <a href={{ category.url }}>
                 <button class="show-odd but {{ category.slug == "odd" ? "checked" : "none" }}">SHOW ODD</button>
             </a>
         </div>
@@ -31,11 +31,6 @@
 </div>
 </header>
     <div class="cards-container react-cards">
-    {# example query #}
-     <!-- {% set boxes = craft.entries()
-            .section('boxes').limit(3).all %} -->
-            <!-- Above and below serve the same purpose, just different ways to do it -->
 
-        {# {% include "categoryboxes.html" %} #}
     </div>
 {% endblock %}

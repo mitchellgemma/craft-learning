@@ -1,8 +1,10 @@
 import React from "react";
 import App from "./App";
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-render(<App />, document.querySelector('.react-cards'));
+const container = document.querySelector('.react-cards')
+const root = createRoot(container)
+root.render(<App />);
 
 //========DOM ELEMENTS======================================================================================
 const buttons = document.querySelectorAll('.btn-group')
@@ -49,32 +51,32 @@ navArray.forEach((link) => {
 
 //==============================================================================
 
-btns.forEach((button) => {
-    button.addEventListener('mouseover', () => {
-        gsap.to(button, {
-            backgroundColor:"rgb(72, 69, 83)",
-            duration: .1
-          })
-        })
-      })
+// btns.forEach((button) => {
+//     button.addEventListener('mouseover', () => {
+//         gsap.to(button, {
+//             backgroundColor:"rgb(72, 69, 83)",
+//             duration: .1
+//           })
+//         })
+//       })
       
-btns.forEach((button) => {
-    button.addEventListener('mouseout', () => {
-        gsap.to(button, 
-          {         
-            backgroundColor:"#646072",
-            duration: .1
-          })
-        })
-      })
+// btns.forEach((button) => {
+//     button.addEventListener('mouseout', () => {
+//         gsap.to(button, 
+//           {         
+//             backgroundColor:"#646072",
+//             duration: .1
+//           })
+//         })
+//       })
 
-checkedButton.addEventListener('mouseout', () => {
-  gsap.to(checkedButton, 
-    {         
-      backgroundColor:"rgb(253, 236, 202)",
-      duration: .1
-    })
-})
+// checkedButton.addEventListener('mouseout', () => {
+//   gsap.to(checkedButton, 
+//     {         
+//       backgroundColor:"rgb(253, 236, 202)",
+//       duration: .1
+//     })
+// })
   // =======================================================================================
   // event listeners for boxes
     // work on .play() and .reverse() after it is all working

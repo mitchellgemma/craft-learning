@@ -42,24 +42,83 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+var allButton = document.querySelector(".show-all");
+var evenButton = document.querySelector(".show-even");
+var oddButton = document.querySelector(".show-odd");
 var endpoint = 'https://bonfire-craft.nitro/api';
-var boxQuery = (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.gql)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  {\n     entry(section: \"home\") {\n    ... on home_home_Entry {\n      boxes {\n        ... on boxes_boxes_Entry {\n        boxTitle\n        boxSubtext\n        boxCategory {\n          title\n        }\n        boxButton\n        buttonUrl\n      }\n      }\n    }\n  }\n}\n"])));
+var boxQuery = (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.gql)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  {\n     entry(section: \"home\") {\n    ... on home_home_Entry {\n      boxes {\n        ... on boxes_boxes_Entry {\n        id\n        boxTitle\n        boxSubtext\n        boxCategory {\n          title\n        }\n        boxButton\n        buttonUrl\n      }\n      }\n    }\n  }\n}\n"])));
 
 var App = function App() {
+  var url = window.location.href;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       data = _useState2[0],
       setData = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      filter = _useState4[0],
+      setFilter = _useState4[1];
+
+  var getFilteredData = function getFilteredData() {
+    if (filter === 'all') {
+      return data;
+    } else if (filter === 'even') {
+      return data.filter(function (box) {
+        return box.boxCategory[0].title === 'even';
+      });
+    } else {
+      return data.filter(function (box) {
+        return box.boxCategory[0].title === 'odd';
+      });
+    }
+  };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.request)(endpoint, boxQuery).then(function (res) {
       return setData(res.entry.boxes);
     });
   }, []);
-  return data.map(function (box) {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var showAll = function showAll(event) {
+      setFilter('all');
+      document.querySelector('.checked').classList.remove('checked');
+      event.currentTarget.classList.add("checked");
+    };
+
+    var showEven = function showEven(event) {
+      setFilter('even');
+      document.querySelector('.checked').classList.remove('checked');
+      event.currentTarget.classList.add("checked");
+    };
+
+    var showOdd = function showOdd(event) {
+      setFilter('odd');
+      event.currentTarget.classList.add("checked");
+      document.querySelector('.checked').classList.remove('checked');
+    };
+
+    allButton.addEventListener("click", showAll);
+    evenButton.addEventListener("click", showEven);
+    oddButton.addEventListener("click", showOdd);
+    return function () {
+      allButton.removeEventListener("click", showAll);
+      evenButton.removeEventListener("click", showEven);
+      oddButton.removeEventListener("click", showOdd);
+    };
+  }, []);
+
+  if (!data) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: "Loading..."
+    });
+  }
+
+  return getFilteredData().map(function (box, i) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Box__WEBPACK_IMPORTED_MODULE_1__["default"], {
       data: box
-    });
+    }, box.id);
   });
 };
 
@@ -97,7 +156,6 @@ var Box = function Box(props) {
   var tl = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var data = props.data;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(data);
     tl.current = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
       paused: true
     }).to(el.current, {
@@ -115,7 +173,9 @@ var Box = function Box(props) {
       opacity: 1,
       ease: Power4.easeOut,
       duration: 0.01
-    }, '>');
+    }, '>'); //   if (data.boxCategory[0].title === 'even'){
+    //   even.push(data)
+    // }
   }, []);
 
   if (data.boxTitle) {
@@ -133,22 +193,10 @@ var Box = function Box(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
           className: "card-title",
           ref: title,
-          onMouseEnter: function onMouseEnter() {
-            return tl.current.play();
-          },
-          onMouseLeave: function onMouseLeave() {
-            return tl.current.reverse();
-          },
           children: data.boxTitle
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
           className: "card-subtext",
           ref: subtext,
-          onMouseEnter: function onMouseEnter() {
-            return tl.current.play();
-          },
-          onMouseLeave: function onMouseLeave() {
-            return tl.current.reverse();
-          },
           children: data.boxSubtext
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -158,12 +206,6 @@ var Box = function Box(props) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             className: "card-btn but",
             ref: btn,
-            onMouseEnter: function onMouseEnter() {
-              return tl.current.play();
-            },
-            onMouseLeave: function onMouseLeave() {
-              return tl.current.reverse();
-            },
             children: data.boxButton
           })
         })
@@ -189,7 +231,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./web/js/App.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -207,7 +249,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-(0,react_dom__WEBPACK_IMPORTED_MODULE_2__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_1__["default"], {}), document.querySelector('.react-cards')); //========DOM ELEMENTS======================================================================================
+var container = document.querySelector('.react-cards');
+var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot)(container);
+root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_App__WEBPACK_IMPORTED_MODULE_1__["default"], {})); //========DOM ELEMENTS======================================================================================
 
 var buttons = document.querySelectorAll('.btn-group');
 var oddBoxes = document.querySelectorAll('.odd');
@@ -246,29 +290,31 @@ arrayButtons.forEach(function (btn) {
 navArray.forEach(function (link) {
   link.addEventListener('click', nav);
 }); //==============================================================================
-
-btns.forEach(function (button) {
-  button.addEventListener('mouseover', function () {
-    gsap.to(button, {
-      backgroundColor: "rgb(72, 69, 83)",
-      duration: .1
-    });
-  });
-});
-btns.forEach(function (button) {
-  button.addEventListener('mouseout', function () {
-    gsap.to(button, {
-      backgroundColor: "#646072",
-      duration: .1
-    });
-  });
-});
-checkedButton.addEventListener('mouseout', function () {
-  gsap.to(checkedButton, {
-    backgroundColor: "rgb(253, 236, 202)",
-    duration: .1
-  });
-}); // =======================================================================================
+// btns.forEach((button) => {
+//     button.addEventListener('mouseover', () => {
+//         gsap.to(button, {
+//             backgroundColor:"rgb(72, 69, 83)",
+//             duration: .1
+//           })
+//         })
+//       })
+// btns.forEach((button) => {
+//     button.addEventListener('mouseout', () => {
+//         gsap.to(button, 
+//           {         
+//             backgroundColor:"#646072",
+//             duration: .1
+//           })
+//         })
+//       })
+// checkedButton.addEventListener('mouseout', () => {
+//   gsap.to(checkedButton, 
+//     {         
+//       backgroundColor:"rgb(253, 236, 202)",
+//       duration: .1
+//     })
+// })
+// =======================================================================================
 // event listeners for boxes
 // work on .play() and .reverse() after it is all working
 
@@ -37586,6 +37632,39 @@ if (
 }
         
   })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var m = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+if (false) {} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
 }
 
 

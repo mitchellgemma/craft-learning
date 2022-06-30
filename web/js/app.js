@@ -46,7 +46,7 @@ const App = () => {
       return 'odd'
     }
   }
-  const [filter, setFilter] = useState(initialFilterState)
+  const [filter, setFilter] = useState(initialFilterState())
 
   const getFilteredData = () => {
     if (filter === 'all') {
@@ -62,26 +62,37 @@ const App = () => {
     console.log(filter)
     request(endpoint, boxQuery).then((res) => setData(res.entry.boxes))
       }, []);
-  
-  // useEffect(() => {
-  //  if (url === baseUrl){
-  //     setFilter('all')
-  //   }else if (url === `${baseUrl}type-of-number/even`){
-  //     setFilter('even')
-  //   } else if (url === `${baseUrl}type-of-number/odd`){
-  //     setFilter('odd')
-  //   }
-    // allButton.addEventListener("click", showAll)
-    // evenButton.addEventListener("click", showEven)
-    // oddButton.addEventListener("click", showOdd)
-    
-    
-    // return () => {
-    //   allButton.removeEventListener("click", showAll)
-    //   evenButton.removeEventListener("click", showEven)
-    //   oddButton.removeEventListener("click", showOdd)
-    // }
-  // }, [])
+
+  useEffect(() => {
+    const showAll = (event) => {
+      setFilter('all')
+      document.querySelector('.checked').classList.remove('checked')
+      event.currentTarget.classList.add("checked")
+      window.history.pushState("", "", '/')
+    }
+    const showEven = (event) => {
+      setFilter('even')
+      document.querySelector('.checked').classList.remove('checked')
+      event.currentTarget.classList.add("checked")
+      window.history.pushState("", "", '/type-of-number/even')
+    }
+    const showOdd = (event) => {
+      setFilter('odd')
+      event.currentTarget.classList.add("checked")
+      document.querySelector('.checked').classList.remove('checked')
+      window.history.pushState("", "", '/type-of-number/odd')
+    }
+    allButton.addEventListener("click", showAll)
+    evenButton.addEventListener("click", showEven)
+    oddButton.addEventListener("click", showOdd)
+
+
+    return () => {
+      allButton.removeEventListener("click", showAll)
+      evenButton.removeEventListener("click", showEven)
+      oddButton.removeEventListener("click", showOdd)
+    }
+  }, [])
 
   if(!data){
     return (

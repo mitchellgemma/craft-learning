@@ -68,7 +68,7 @@ var App = function App() {
     }
   };
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilterState),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialFilterState()),
       _useState4 = _slicedToArray(_useState3, 2),
       filter = _useState4[0],
       setFilter = _useState4[1];
@@ -92,23 +92,38 @@ var App = function App() {
     (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.request)(endpoint, boxQuery).then(function (res) {
       return setData(res.entry.boxes);
     });
-  }, []); // useEffect(() => {
-  //  if (url === baseUrl){
-  //     setFilter('all')
-  //   }else if (url === `${baseUrl}type-of-number/even`){
-  //     setFilter('even')
-  //   } else if (url === `${baseUrl}type-of-number/odd`){
-  //     setFilter('odd')
-  //   }
-  // allButton.addEventListener("click", showAll)
-  // evenButton.addEventListener("click", showEven)
-  // oddButton.addEventListener("click", showOdd)
-  // return () => {
-  //   allButton.removeEventListener("click", showAll)
-  //   evenButton.removeEventListener("click", showEven)
-  //   oddButton.removeEventListener("click", showOdd)
-  // }
-  // }, [])
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var showAll = function showAll(event) {
+      setFilter('all');
+      document.querySelector('.checked').classList.remove('checked');
+      event.currentTarget.classList.add("checked");
+      window.history.pushState("", "", '/');
+    };
+
+    var showEven = function showEven(event) {
+      setFilter('even');
+      document.querySelector('.checked').classList.remove('checked');
+      event.currentTarget.classList.add("checked");
+      window.history.pushState("", "", '/type-of-number/even');
+    };
+
+    var showOdd = function showOdd(event) {
+      setFilter('odd');
+      event.currentTarget.classList.add("checked");
+      document.querySelector('.checked').classList.remove('checked');
+      window.history.pushState("", "", '/type-of-number/odd');
+    };
+
+    allButton.addEventListener("click", showAll);
+    evenButton.addEventListener("click", showEven);
+    oddButton.addEventListener("click", showOdd);
+    return function () {
+      allButton.removeEventListener("click", showAll);
+      evenButton.removeEventListener("click", showEven);
+      oddButton.removeEventListener("click", showOdd);
+    };
+  }, []);
 
   if (!data) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {

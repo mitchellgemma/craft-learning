@@ -1,4 +1,4 @@
-dateModified: 1656532699
+dateModified: 1656616760
 email:
   fromEmail: mitch@hellobonfire.com
   fromName: 'Bonfire Craft'
@@ -49,6 +49,10 @@ meta:
     f8588823-aa23-4ab7-961e-ee92b9fff542: 'Blog Entry' # Blog Entry
     fcc7d786-4378-4f36-b3c2-75906707a81f: 'Box Category' # Box Category
 plugins:
+  dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   navigation:
     edition: standard
     enabled: true

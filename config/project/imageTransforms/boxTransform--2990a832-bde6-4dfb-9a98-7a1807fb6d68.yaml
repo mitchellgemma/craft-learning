@@ -1,0 +1,9 @@
+format: jpg
+handle: boxTransform
+height: null
+interlace: none
+mode: crop
+name: 'Box Transform'
+position: center-center
+quality: 30
+width: 200

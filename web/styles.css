@@ -280,3 +280,7 @@ html {
   height: 5000px;
   width: 100%;
 }
+
+.box-image {
+  width: 100px;
+}

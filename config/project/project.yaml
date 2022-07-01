@@ -1,9 +1,16 @@
-dateModified: 1656616760
+dateModified: 1656687972
 email:
   fromEmail: mitch@hellobonfire.com
   fromName: 'Bonfire Craft'
   transportType: craft\mail\transportadapters\Sendmail
 fs:
+  boxImages:
+    hasUrls: true
+    name: 'Box Images'
+    settings:
+      path: '@web/media'
+    type: craft\fs\Local
+    url: '@web/media'
   learning:
     hasUrls: true
     name: Learning
@@ -30,13 +37,16 @@ meta:
     24be0cca-4df1-43ba-8e79-72f0ab3c5a7b: 'Button URL' # Button URL
     043ad44f-4416-4a63-8c7d-2b28d78cf2e6: Blog # Blog
     77c9e69f-7628-4f93-9a54-cdfdb8009ac1: Boxes # Boxes
+    79cc44ca-2dc7-4ea0-baa9-c8c9d43c2c2a: 'Box Images' # Box Images
     1097f618-43c7-44d3-865d-82f9543dc597: 'Blog Entries' # Blog Entries
+    2990a832-bde6-4dfb-9a98-7a1807fb6d68: 'Box Transform' # Box Transform
     6810ae13-1880-4b97-bdf6-1e0dad2a677b: 'Blog Content' # Blog Content
     45150b46-6997-42f3-8551-b9250ddb125e: 'Page Background' # Page Background
     486106d1-f090-4258-8609-0299cb1c175b: Boxes # Boxes
     742694d0-89a4-4d0c-bf6c-46bf262f060c: Boxes # Boxes
     7054554a-3706-4536-b965-b0331a162a6c: Home # Home
     36199568-9491-4132-b644-51319dbef53b: Blog # Blog
+    93526286-5f8b-496b-9a25-d2d525a053ff: 'Box Images' # Box Images
     a4ed7be9-7105-4e16-8351-4816b81c704f: 'Button Text' # Button Text
     a9516c1c-e914-43fa-9448-3ce930e339ac: 'Box URL' # Box URL
     b1df6924-c61e-4059-94a1-692c288f6925: 'Public Schema' # Public Schema

@@ -25,6 +25,13 @@ const boxQuery = gql`
         }
         boxButton
         buttonUrl
+        boxImages {
+          url @transform
+            (width: 200
+          	quality: 70
+            format: "jpg"
+            )
+        }
       }
       }
     }
@@ -59,7 +66,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(filter)
     request(endpoint, boxQuery).then((res) => setData(res.entry.boxes))
       }, []);
 
@@ -80,7 +86,7 @@ const App = () => {
       setFilter('odd')
       event.currentTarget.classList.add("checked")
       document.querySelector('.checked').classList.remove('checked')
-      window.history.pushState("", "", '/type-of-number/odd')
+      window.history.pushState("", "", '/type-of-number/even')
     }
     allButton.addEventListener("click", showAll)
     evenButton.addEventListener("click", showEven)

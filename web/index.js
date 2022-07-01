@@ -46,7 +46,7 @@ var allButton = document.querySelector(".show-all");
 var evenButton = document.querySelector(".show-even");
 var oddButton = document.querySelector(".show-odd");
 var endpoint = 'https://bonfire-craft.nitro/api';
-var boxQuery = (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.gql)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  {\n     entry(section: \"home\") {\n    ... on home_home_Entry {\n      boxes {\n        ... on boxes_boxes_Entry {\n        id\n        boxTitle\n        boxSubtext\n        boxCategory {\n          title\n        }\n        boxButton\n        buttonUrl\n      }\n      }\n    }\n  }\n}\n"])));
+var boxQuery = (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.gql)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  {\n     entry(section: \"home\") {\n    ... on home_home_Entry {\n      boxes {\n        ... on boxes_boxes_Entry {\n        id\n        boxTitle\n        boxSubtext\n        boxCategory {\n          title\n        }\n        boxButton\n        buttonUrl\n        boxImages {\n          url @transform\n            (width: 200\n          \tquality: 70\n            format: \"jpg\"\n            )\n        }\n      }\n      }\n    }\n  }\n}\n"])));
 
 var App = function App() {
   var url = window.location.href;
@@ -88,7 +88,6 @@ var App = function App() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(filter);
     (0,graphql_request__WEBPACK_IMPORTED_MODULE_2__.request)(endpoint, boxQuery).then(function (res) {
       return setData(res.entry.boxes);
     });
@@ -112,7 +111,7 @@ var App = function App() {
       setFilter('odd');
       event.currentTarget.classList.add("checked");
       document.querySelector('.checked').classList.remove('checked');
-      window.history.pushState("", "", '/type-of-number/odd');
+      window.history.pushState("", "", '/type-of-number/even');
     };
 
     allButton.addEventListener("click", showAll);
@@ -155,8 +154,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var lazysizes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lazysizes */ "./node_modules/lazysizes/lazysizes.js");
+/* harmony import */ var lazysizes__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lazysizes__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lazysizes_plugins_attrchange_ls_attrchange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lazysizes/plugins/attrchange/ls.attrchange */ "./node_modules/lazysizes/plugins/attrchange/ls.attrchange.js");
+/* harmony import */ var lazysizes_plugins_attrchange_ls_attrchange__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lazysizes_plugins_attrchange_ls_attrchange__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -168,11 +173,12 @@ var Box = function Box(props) {
   var title = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var subtext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var btn = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  var q = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.utils.selector(el);
+  var q = gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.utils.selector(el);
   var tl = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var data = props.data;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    tl.current = gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.timeline({
+    console.log("hello", data.boxImages[0].url);
+    tl.current = gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.timeline({
       paused: true
     }).to(el.current, {
       y: -15,
@@ -195,7 +201,7 @@ var Box = function Box(props) {
   }, []);
 
   if (data.boxTitle) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "card",
       ref: el,
       onMouseEnter: function onMouseEnter() {
@@ -204,22 +210,26 @@ var Box = function Box(props) {
       onMouseLeave: function onMouseLeave() {
         return tl.current.reverse();
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "box",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
           className: "card-title",
           ref: title,
           children: data.boxTitle
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h4", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
           className: "card-subtext",
           ref: subtext,
           children: data.boxSubtext
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        "data-src": data.boxImages[0].url,
+        alt: "box image",
+        className: "lazyload box-image"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "btn-group",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
           href: data.buttonUrl,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "card-btn but",
             ref: btn,
             children: data.boxButton
@@ -7762,6 +7772,969 @@ __webpack_require__.r(__webpack_exports__);
 var gsapWithCSS = _gsap_core_js__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(_CSSPlugin_js__WEBPACK_IMPORTED_MODULE_1__.CSSPlugin) || _gsap_core_js__WEBPACK_IMPORTED_MODULE_0__.gsap,
     // to protect from tree shaking
 TweenMaxWithCSS = gsapWithCSS.core.Tween;
+
+
+/***/ }),
+
+/***/ "./node_modules/lazysizes/lazysizes.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lazysizes/lazysizes.js ***!
+  \*********************************************/
+/***/ ((module) => {
+
+(function(window, factory) {
+	var lazySizes = factory(window, window.document, Date);
+	window.lazySizes = lazySizes;
+	if( true && module.exports){
+		module.exports = lazySizes;
+	}
+}(typeof window != 'undefined' ?
+      window : {}, 
+/**
+ * import("./types/global")
+ * @typedef { import("./types/lazysizes-config").LazySizesConfigPartial } LazySizesConfigPartial
+ */
+function l(window, document, Date) { // Pass in the window Date function also for SSR because the Date class can be lost
+	'use strict';
+	/*jshint eqnull:true */
+
+	var lazysizes,
+		/**
+		 * @type { LazySizesConfigPartial }
+		 */
+		lazySizesCfg;
+
+	(function(){
+		var prop;
+
+		var lazySizesDefaults = {
+			lazyClass: 'lazyload',
+			loadedClass: 'lazyloaded',
+			loadingClass: 'lazyloading',
+			preloadClass: 'lazypreload',
+			errorClass: 'lazyerror',
+			//strictClass: 'lazystrict',
+			autosizesClass: 'lazyautosizes',
+			fastLoadedClass: 'ls-is-cached',
+			iframeLoadMode: 0,
+			srcAttr: 'data-src',
+			srcsetAttr: 'data-srcset',
+			sizesAttr: 'data-sizes',
+			//preloadAfterLoad: false,
+			minSize: 40,
+			customMedia: {},
+			init: true,
+			expFactor: 1.5,
+			hFac: 0.8,
+			loadMode: 2,
+			loadHidden: true,
+			ricTimeout: 0,
+			throttleDelay: 125,
+		};
+
+		lazySizesCfg = window.lazySizesConfig || window.lazysizesConfig || {};
+
+		for(prop in lazySizesDefaults){
+			if(!(prop in lazySizesCfg)){
+				lazySizesCfg[prop] = lazySizesDefaults[prop];
+			}
+		}
+	})();
+
+	if (!document || !document.getElementsByClassName) {
+		return {
+			init: function () {},
+			/**
+			 * @type { LazySizesConfigPartial }
+			 */
+			cfg: lazySizesCfg,
+			/**
+			 * @type { true }
+			 */
+			noSupport: true,
+		};
+	}
+
+	var docElem = document.documentElement;
+
+	var supportPicture = window.HTMLPictureElement;
+
+	var _addEventListener = 'addEventListener';
+
+	var _getAttribute = 'getAttribute';
+
+	/**
+	 * Update to bind to window because 'this' becomes null during SSR
+	 * builds.
+	 */
+	var addEventListener = window[_addEventListener].bind(window);
+
+	var setTimeout = window.setTimeout;
+
+	var requestAnimationFrame = window.requestAnimationFrame || setTimeout;
+
+	var requestIdleCallback = window.requestIdleCallback;
+
+	var regPicture = /^picture$/i;
+
+	var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
+
+	var regClassCache = {};
+
+	var forEach = Array.prototype.forEach;
+
+	/**
+	 * @param ele {Element}
+	 * @param cls {string}
+	 */
+	var hasClass = function(ele, cls) {
+		if(!regClassCache[cls]){
+			regClassCache[cls] = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+		}
+		return regClassCache[cls].test(ele[_getAttribute]('class') || '') && regClassCache[cls];
+	};
+
+	/**
+	 * @param ele {Element}
+	 * @param cls {string}
+	 */
+	var addClass = function(ele, cls) {
+		if (!hasClass(ele, cls)){
+			ele.setAttribute('class', (ele[_getAttribute]('class') || '').trim() + ' ' + cls);
+		}
+	};
+
+	/**
+	 * @param ele {Element}
+	 * @param cls {string}
+	 */
+	var removeClass = function(ele, cls) {
+		var reg;
+		if ((reg = hasClass(ele,cls))) {
+			ele.setAttribute('class', (ele[_getAttribute]('class') || '').replace(reg, ' '));
+		}
+	};
+
+	var addRemoveLoadEvents = function(dom, fn, add){
+		var action = add ? _addEventListener : 'removeEventListener';
+		if(add){
+			addRemoveLoadEvents(dom, fn);
+		}
+		loadEvents.forEach(function(evt){
+			dom[action](evt, fn);
+		});
+	};
+
+	/**
+	 * @param elem { Element }
+	 * @param name { string }
+	 * @param detail { any }
+	 * @param noBubbles { boolean }
+	 * @param noCancelable { boolean }
+	 * @returns { CustomEvent }
+	 */
+	var triggerEvent = function(elem, name, detail, noBubbles, noCancelable){
+		var event = document.createEvent('Event');
+
+		if(!detail){
+			detail = {};
+		}
+
+		detail.instance = lazysizes;
+
+		event.initEvent(name, !noBubbles, !noCancelable);
+
+		event.detail = detail;
+
+		elem.dispatchEvent(event);
+		return event;
+	};
+
+	var updatePolyfill = function (el, full){
+		var polyfill;
+		if( !supportPicture && ( polyfill = (window.picturefill || lazySizesCfg.pf) ) ){
+			if(full && full.src && !el[_getAttribute]('srcset')){
+				el.setAttribute('srcset', full.src);
+			}
+			polyfill({reevaluate: true, elements: [el]});
+		} else if(full && full.src){
+			el.src = full.src;
+		}
+	};
+
+	var getCSS = function (elem, style){
+		return (getComputedStyle(elem, null) || {})[style];
+	};
+
+	/**
+	 *
+	 * @param elem { Element }
+	 * @param parent { Element }
+	 * @param [width] {number}
+	 * @returns {number}
+	 */
+	var getWidth = function(elem, parent, width){
+		width = width || elem.offsetWidth;
+
+		while(width < lazySizesCfg.minSize && parent && !elem._lazysizesWidth){
+			width =  parent.offsetWidth;
+			parent = parent.parentNode;
+		}
+
+		return width;
+	};
+
+	var rAF = (function(){
+		var running, waiting;
+		var firstFns = [];
+		var secondFns = [];
+		var fns = firstFns;
+
+		var run = function(){
+			var runFns = fns;
+
+			fns = firstFns.length ? secondFns : firstFns;
+
+			running = true;
+			waiting = false;
+
+			while(runFns.length){
+				runFns.shift()();
+			}
+
+			running = false;
+		};
+
+		var rafBatch = function(fn, queue){
+			if(running && !queue){
+				fn.apply(this, arguments);
+			} else {
+				fns.push(fn);
+
+				if(!waiting){
+					waiting = true;
+					(document.hidden ? setTimeout : requestAnimationFrame)(run);
+				}
+			}
+		};
+
+		rafBatch._lsFlush = run;
+
+		return rafBatch;
+	})();
+
+	var rAFIt = function(fn, simple){
+		return simple ?
+			function() {
+				rAF(fn);
+			} :
+			function(){
+				var that = this;
+				var args = arguments;
+				rAF(function(){
+					fn.apply(that, args);
+				});
+			}
+		;
+	};
+
+	var throttle = function(fn){
+		var running;
+		var lastTime = 0;
+		var gDelay = lazySizesCfg.throttleDelay;
+		var rICTimeout = lazySizesCfg.ricTimeout;
+		var run = function(){
+			running = false;
+			lastTime = Date.now();
+			fn();
+		};
+		var idleCallback = requestIdleCallback && rICTimeout > 49 ?
+			function(){
+				requestIdleCallback(run, {timeout: rICTimeout});
+
+				if(rICTimeout !== lazySizesCfg.ricTimeout){
+					rICTimeout = lazySizesCfg.ricTimeout;
+				}
+			} :
+			rAFIt(function(){
+				setTimeout(run);
+			}, true)
+		;
+
+		return function(isPriority){
+			var delay;
+
+			if((isPriority = isPriority === true)){
+				rICTimeout = 33;
+			}
+
+			if(running){
+				return;
+			}
+
+			running =  true;
+
+			delay = gDelay - (Date.now() - lastTime);
+
+			if(delay < 0){
+				delay = 0;
+			}
+
+			if(isPriority || delay < 9){
+				idleCallback();
+			} else {
+				setTimeout(idleCallback, delay);
+			}
+		};
+	};
+
+	//based on http://modernjavascript.blogspot.de/2013/08/building-better-debounce.html
+	var debounce = function(func) {
+		var timeout, timestamp;
+		var wait = 99;
+		var run = function(){
+			timeout = null;
+			func();
+		};
+		var later = function() {
+			var last = Date.now() - timestamp;
+
+			if (last < wait) {
+				setTimeout(later, wait - last);
+			} else {
+				(requestIdleCallback || run)(run);
+			}
+		};
+
+		return function() {
+			timestamp = Date.now();
+
+			if (!timeout) {
+				timeout = setTimeout(later, wait);
+			}
+		};
+	};
+
+	var loader = (function(){
+		var preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
+
+		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom, isBodyHidden;
+
+		var regImg = /^img$/i;
+		var regIframe = /^iframe$/i;
+
+		var supportScroll = ('onscroll' in window) && !(/(gle|ing)bot/.test(navigator.userAgent));
+
+		var shrinkExpand = 0;
+		var currentExpand = 0;
+
+		var isLoading = 0;
+		var lowRuns = -1;
+
+		var resetPreloading = function(e){
+			isLoading--;
+			if(!e || isLoading < 0 || !e.target){
+				isLoading = 0;
+			}
+		};
+
+		var isVisible = function (elem) {
+			if (isBodyHidden == null) {
+				isBodyHidden = getCSS(document.body, 'visibility') == 'hidden';
+			}
+
+			return isBodyHidden || !(getCSS(elem.parentNode, 'visibility') == 'hidden' && getCSS(elem, 'visibility') == 'hidden');
+		};
+
+		var isNestedVisible = function(elem, elemExpand){
+			var outerRect;
+			var parent = elem;
+			var visible = isVisible(elem);
+
+			eLtop -= elemExpand;
+			eLbottom += elemExpand;
+			eLleft -= elemExpand;
+			eLright += elemExpand;
+
+			while(visible && (parent = parent.offsetParent) && parent != document.body && parent != docElem){
+				visible = ((getCSS(parent, 'opacity') || 1) > 0);
+
+				if(visible && getCSS(parent, 'overflow') != 'visible'){
+					outerRect = parent.getBoundingClientRect();
+					visible = eLright > outerRect.left &&
+						eLleft < outerRect.right &&
+						eLbottom > outerRect.top - 1 &&
+						eLtop < outerRect.bottom + 1
+					;
+				}
+			}
+
+			return visible;
+		};
+
+		var checkElements = function() {
+			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal,
+				beforeExpandVal, defaultExpand, preloadExpand, hFac;
+			var lazyloadElems = lazysizes.elements;
+
+			if((loadMode = lazySizesCfg.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)){
+
+				i = 0;
+
+				lowRuns++;
+
+				for(; i < eLlen; i++){
+
+					if(!lazyloadElems[i] || lazyloadElems[i]._lazyRace){continue;}
+
+					if(!supportScroll || (lazysizes.prematureUnveil && lazysizes.prematureUnveil(lazyloadElems[i]))){unveilElement(lazyloadElems[i]);continue;}
+
+					if(!(elemExpandVal = lazyloadElems[i][_getAttribute]('data-expand')) || !(elemExpand = elemExpandVal * 1)){
+						elemExpand = currentExpand;
+					}
+
+					if (!defaultExpand) {
+						defaultExpand = (!lazySizesCfg.expand || lazySizesCfg.expand < 1) ?
+							docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370 :
+							lazySizesCfg.expand;
+
+						lazysizes._defEx = defaultExpand;
+
+						preloadExpand = defaultExpand * lazySizesCfg.expFactor;
+						hFac = lazySizesCfg.hFac;
+						isBodyHidden = null;
+
+						if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 2 && loadMode > 2 && !document.hidden){
+							currentExpand = preloadExpand;
+							lowRuns = 0;
+						} else if(loadMode > 1 && lowRuns > 1 && isLoading < 6){
+							currentExpand = defaultExpand;
+						} else {
+							currentExpand = shrinkExpand;
+						}
+					}
+
+					if(beforeExpandVal !== elemExpand){
+						eLvW = innerWidth + (elemExpand * hFac);
+						elvH = innerHeight + elemExpand;
+						elemNegativeExpand = elemExpand * -1;
+						beforeExpandVal = elemExpand;
+					}
+
+					rect = lazyloadElems[i].getBoundingClientRect();
+
+					if ((eLbottom = rect.bottom) >= elemNegativeExpand &&
+						(eLtop = rect.top) <= elvH &&
+						(eLright = rect.right) >= elemNegativeExpand * hFac &&
+						(eLleft = rect.left) <= eLvW &&
+						(eLbottom || eLright || eLleft || eLtop) &&
+						(lazySizesCfg.loadHidden || isVisible(lazyloadElems[i])) &&
+						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
+						unveilElement(lazyloadElems[i]);
+						loadedSomething = true;
+						if(isLoading > 9){break;}
+					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
+						isLoading < 4 && lowRuns < 4 && loadMode > 2 &&
+						(preloadElems[0] || lazySizesCfg.preloadAfterLoad) &&
+						(preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i][_getAttribute](lazySizesCfg.sizesAttr) != 'auto')))){
+						autoLoadElem = preloadElems[0] || lazyloadElems[i];
+					}
+				}
+
+				if(autoLoadElem && !loadedSomething){
+					unveilElement(autoLoadElem);
+				}
+			}
+		};
+
+		var throttledCheckElements = throttle(checkElements);
+
+		var switchLoadingClass = function(e){
+			var elem = e.target;
+
+			if (elem._lazyCache) {
+				delete elem._lazyCache;
+				return;
+			}
+
+			resetPreloading(e);
+			addClass(elem, lazySizesCfg.loadedClass);
+			removeClass(elem, lazySizesCfg.loadingClass);
+			addRemoveLoadEvents(elem, rafSwitchLoadingClass);
+			triggerEvent(elem, 'lazyloaded');
+		};
+		var rafedSwitchLoadingClass = rAFIt(switchLoadingClass);
+		var rafSwitchLoadingClass = function(e){
+			rafedSwitchLoadingClass({target: e.target});
+		};
+
+		var changeIframeSrc = function(elem, src){
+			var loadMode = elem.getAttribute('data-load-mode') || lazySizesCfg.iframeLoadMode;
+
+			// loadMode can be also a string!
+			if (loadMode == 0) {
+				elem.contentWindow.location.replace(src);
+			} else if (loadMode == 1) {
+				elem.src = src;
+			}
+		};
+
+		var handleSources = function(source){
+			var customMedia;
+
+			var sourceSrcset = source[_getAttribute](lazySizesCfg.srcsetAttr);
+
+			if( (customMedia = lazySizesCfg.customMedia[source[_getAttribute]('data-media') || source[_getAttribute]('media')]) ){
+				source.setAttribute('media', customMedia);
+			}
+
+			if(sourceSrcset){
+				source.setAttribute('srcset', sourceSrcset);
+			}
+		};
+
+		var lazyUnveil = rAFIt(function (elem, detail, isAuto, sizes, isImg){
+			var src, srcset, parent, isPicture, event, firesLoad;
+
+			if(!(event = triggerEvent(elem, 'lazybeforeunveil', detail)).defaultPrevented){
+
+				if(sizes){
+					if(isAuto){
+						addClass(elem, lazySizesCfg.autosizesClass);
+					} else {
+						elem.setAttribute('sizes', sizes);
+					}
+				}
+
+				srcset = elem[_getAttribute](lazySizesCfg.srcsetAttr);
+				src = elem[_getAttribute](lazySizesCfg.srcAttr);
+
+				if(isImg) {
+					parent = elem.parentNode;
+					isPicture = parent && regPicture.test(parent.nodeName || '');
+				}
+
+				firesLoad = detail.firesLoad || (('src' in elem) && (srcset || src || isPicture));
+
+				event = {target: elem};
+
+				addClass(elem, lazySizesCfg.loadingClass);
+
+				if(firesLoad){
+					clearTimeout(resetPreloadingTimer);
+					resetPreloadingTimer = setTimeout(resetPreloading, 2500);
+					addRemoveLoadEvents(elem, rafSwitchLoadingClass, true);
+				}
+
+				if(isPicture){
+					forEach.call(parent.getElementsByTagName('source'), handleSources);
+				}
+
+				if(srcset){
+					elem.setAttribute('srcset', srcset);
+				} else if(src && !isPicture){
+					if(regIframe.test(elem.nodeName)){
+						changeIframeSrc(elem, src);
+					} else {
+						elem.src = src;
+					}
+				}
+
+				if(isImg && (srcset || isPicture)){
+					updatePolyfill(elem, {src: src});
+				}
+			}
+
+			if(elem._lazyRace){
+				delete elem._lazyRace;
+			}
+			removeClass(elem, lazySizesCfg.lazyClass);
+
+			rAF(function(){
+				// Part of this can be removed as soon as this fix is older: https://bugs.chromium.org/p/chromium/issues/detail?id=7731 (2015)
+				var isLoaded = elem.complete && elem.naturalWidth > 1;
+
+				if( !firesLoad || isLoaded){
+					if (isLoaded) {
+						addClass(elem, lazySizesCfg.fastLoadedClass);
+					}
+					switchLoadingClass(event);
+					elem._lazyCache = true;
+					setTimeout(function(){
+						if ('_lazyCache' in elem) {
+							delete elem._lazyCache;
+						}
+					}, 9);
+				}
+				if (elem.loading == 'lazy') {
+					isLoading--;
+				}
+			}, true);
+		});
+
+		/**
+		 *
+		 * @param elem { Element }
+		 */
+		var unveilElement = function (elem){
+			if (elem._lazyRace) {return;}
+			var detail;
+
+			var isImg = regImg.test(elem.nodeName);
+
+			//allow using sizes="auto", but don't use. it's invalid. Use data-sizes="auto" or a valid value for sizes instead (i.e.: sizes="80vw")
+			var sizes = isImg && (elem[_getAttribute](lazySizesCfg.sizesAttr) || elem[_getAttribute]('sizes'));
+			var isAuto = sizes == 'auto';
+
+			if( (isAuto || !isCompleted) && isImg && (elem[_getAttribute]('src') || elem.srcset) && !elem.complete && !hasClass(elem, lazySizesCfg.errorClass) && hasClass(elem, lazySizesCfg.lazyClass)){return;}
+
+			detail = triggerEvent(elem, 'lazyunveilread').detail;
+
+			if(isAuto){
+				 autoSizer.updateElem(elem, true, elem.offsetWidth);
+			}
+
+			elem._lazyRace = true;
+			isLoading++;
+
+			lazyUnveil(elem, detail, isAuto, sizes, isImg);
+		};
+
+		var afterScroll = debounce(function(){
+			lazySizesCfg.loadMode = 3;
+			throttledCheckElements();
+		});
+
+		var altLoadmodeScrollListner = function(){
+			if(lazySizesCfg.loadMode == 3){
+				lazySizesCfg.loadMode = 2;
+			}
+			afterScroll();
+		};
+
+		var onload = function(){
+			if(isCompleted){return;}
+			if(Date.now() - started < 999){
+				setTimeout(onload, 999);
+				return;
+			}
+
+
+			isCompleted = true;
+
+			lazySizesCfg.loadMode = 3;
+
+			throttledCheckElements();
+
+			addEventListener('scroll', altLoadmodeScrollListner, true);
+		};
+
+		return {
+			_: function(){
+				started = Date.now();
+
+				lazysizes.elements = document.getElementsByClassName(lazySizesCfg.lazyClass);
+				preloadElems = document.getElementsByClassName(lazySizesCfg.lazyClass + ' ' + lazySizesCfg.preloadClass);
+
+				addEventListener('scroll', throttledCheckElements, true);
+
+				addEventListener('resize', throttledCheckElements, true);
+
+				addEventListener('pageshow', function (e) {
+					if (e.persisted) {
+						var loadingElements = document.querySelectorAll('.' + lazySizesCfg.loadingClass);
+
+						if (loadingElements.length && loadingElements.forEach) {
+							requestAnimationFrame(function () {
+								loadingElements.forEach( function (img) {
+									if (img.complete) {
+										unveilElement(img);
+									}
+								});
+							});
+						}
+					}
+				});
+
+				if(window.MutationObserver){
+					new MutationObserver( throttledCheckElements ).observe( docElem, {childList: true, subtree: true, attributes: true} );
+				} else {
+					docElem[_addEventListener]('DOMNodeInserted', throttledCheckElements, true);
+					docElem[_addEventListener]('DOMAttrModified', throttledCheckElements, true);
+					setInterval(throttledCheckElements, 999);
+				}
+
+				addEventListener('hashchange', throttledCheckElements, true);
+
+				//, 'fullscreenchange'
+				['focus', 'mouseover', 'click', 'load', 'transitionend', 'animationend'].forEach(function(name){
+					document[_addEventListener](name, throttledCheckElements, true);
+				});
+
+				if((/d$|^c/.test(document.readyState))){
+					onload();
+				} else {
+					addEventListener('load', onload);
+					document[_addEventListener]('DOMContentLoaded', throttledCheckElements);
+					setTimeout(onload, 20000);
+				}
+
+				if(lazysizes.elements.length){
+					checkElements();
+					rAF._lsFlush();
+				} else {
+					throttledCheckElements();
+				}
+			},
+			checkElems: throttledCheckElements,
+			unveil: unveilElement,
+			_aLSL: altLoadmodeScrollListner,
+		};
+	})();
+
+
+	var autoSizer = (function(){
+		var autosizesElems;
+
+		var sizeElement = rAFIt(function(elem, parent, event, width){
+			var sources, i, len;
+			elem._lazysizesWidth = width;
+			width += 'px';
+
+			elem.setAttribute('sizes', width);
+
+			if(regPicture.test(parent.nodeName || '')){
+				sources = parent.getElementsByTagName('source');
+				for(i = 0, len = sources.length; i < len; i++){
+					sources[i].setAttribute('sizes', width);
+				}
+			}
+
+			if(!event.detail.dataAttr){
+				updatePolyfill(elem, event.detail);
+			}
+		});
+		/**
+		 *
+		 * @param elem {Element}
+		 * @param dataAttr
+		 * @param [width] { number }
+		 */
+		var getSizeElement = function (elem, dataAttr, width){
+			var event;
+			var parent = elem.parentNode;
+
+			if(parent){
+				width = getWidth(elem, parent, width);
+				event = triggerEvent(elem, 'lazybeforesizes', {width: width, dataAttr: !!dataAttr});
+
+				if(!event.defaultPrevented){
+					width = event.detail.width;
+
+					if(width && width !== elem._lazysizesWidth){
+						sizeElement(elem, parent, event, width);
+					}
+				}
+			}
+		};
+
+		var updateElementsSizes = function(){
+			var i;
+			var len = autosizesElems.length;
+			if(len){
+				i = 0;
+
+				for(; i < len; i++){
+					getSizeElement(autosizesElems[i]);
+				}
+			}
+		};
+
+		var debouncedUpdateElementsSizes = debounce(updateElementsSizes);
+
+		return {
+			_: function(){
+				autosizesElems = document.getElementsByClassName(lazySizesCfg.autosizesClass);
+				addEventListener('resize', debouncedUpdateElementsSizes);
+			},
+			checkElems: debouncedUpdateElementsSizes,
+			updateElem: getSizeElement
+		};
+	})();
+
+	var init = function(){
+		if(!init.i && document.getElementsByClassName){
+			init.i = true;
+			autoSizer._();
+			loader._();
+		}
+	};
+
+	setTimeout(function(){
+		if(lazySizesCfg.init){
+			init();
+		}
+	});
+
+	lazysizes = {
+		/**
+		 * @type { LazySizesConfigPartial }
+		 */
+		cfg: lazySizesCfg,
+		autoSizer: autoSizer,
+		loader: loader,
+		init: init,
+		uP: updatePolyfill,
+		aC: addClass,
+		rC: removeClass,
+		hC: hasClass,
+		fire: triggerEvent,
+		gW: getWidth,
+		rAF: rAF,
+	};
+
+	return lazysizes;
+}
+));
+
+
+/***/ }),
+
+/***/ "./node_modules/lazysizes/plugins/attrchange/ls.attrchange.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/lazysizes/plugins/attrchange/ls.attrchange.js ***!
+  \********************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(window, factory) {
+	if(!window) {return;}
+	var globalInstall = function(){
+		factory(window.lazySizes);
+		window.removeEventListener('lazyunveilread', globalInstall, true);
+	};
+
+	factory = factory.bind(null, window, window.document);
+
+	if( true && module.exports){
+		factory(__webpack_require__(/*! lazysizes */ "./node_modules/lazysizes/lazysizes.js"));
+	} else if (true) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! lazysizes */ "./node_modules/lazysizes/lazysizes.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}(typeof window != 'undefined' ?
+	window : 0, function(window, document, lazySizes) {
+	'use strict';
+
+	var addObserver = function(){
+		var connect, disconnect, observer, connected;
+		var lsCfg = lazySizes.cfg;
+		var attributes = {'data-bgset': 1, 'data-include': 1, 'data-poster': 1, 'data-bg': 1, 'data-script': 1};
+		var regClassTest = '(\\s|^)(' + lsCfg.loadedClass;
+		var docElem = document.documentElement;
+
+		var setClass = function(target){
+			lazySizes.rAF(function(){
+				lazySizes.rC(target, lsCfg.loadedClass);
+				if(lsCfg.unloadedClass){
+					lazySizes.rC(target, lsCfg.unloadedClass);
+				}
+				lazySizes.aC(target, lsCfg.lazyClass);
+
+				if(target.style.display == 'none' || (target.parentNode && target.parentNode.style.display == 'none')){
+					setTimeout(function () {
+						lazySizes.loader.unveil(target);
+					}, 0);
+				}
+			});
+		};
+
+		var onMutation = function(mutations){
+			var i, len, mutation, target;
+			for(i = 0, len = mutations.length; i < len; i++){
+				mutation = mutations[i];
+				target = mutation.target;
+
+				if(!target.getAttribute(mutation.attributeName)){continue;}
+
+				if(target.localName == 'source' && target.parentNode){
+					target = target.parentNode.querySelector('img');
+				}
+
+				if(target && regClassTest.test(target.className)){
+					setClass(target);
+				}
+			}
+		};
+
+		if(lsCfg.unloadedClass){
+			regClassTest += '|' + lsCfg.unloadedClass;
+		}
+
+		regClassTest += '|' + lsCfg.loadingClass + ')(\\s|$)';
+
+		regClassTest = new RegExp(regClassTest);
+
+		attributes[lsCfg.srcAttr] = 1;
+		attributes[lsCfg.srcsetAttr] = 1;
+
+		if(window.MutationObserver){
+			observer = new MutationObserver(onMutation);
+
+			connect = function(){
+				if(!connected){
+					connected = true;
+					observer.observe( docElem, { subtree: true, attributes: true, attributeFilter: Object.keys(attributes)} );
+				}
+			};
+			disconnect = function(){
+				if(connected){
+					connected = false;
+					observer.disconnect();
+				}
+			};
+		} else {
+			docElem.addEventListener('DOMAttrModified', (function(){
+				var runs;
+				var modifications = [];
+				var callMutations = function(){
+					onMutation(modifications);
+					modifications = [];
+					runs = false;
+				};
+				return function(e){
+					if(connected && attributes[e.attrName] && e.newValue){
+						modifications.push({target: e.target, attributeName: e.attrName});
+						if(!runs){
+							setTimeout(callMutations);
+							runs = true;
+						}
+					}
+				};
+			})(), true);
+
+			connect = function(){
+				connected = true;
+			};
+			disconnect = function(){
+				connected = false;
+			};
+		}
+
+		addEventListener('lazybeforeunveil', disconnect, true);
+		addEventListener('lazybeforeunveil', connect);
+
+		addEventListener('lazybeforesizes', disconnect, true);
+		addEventListener('lazybeforesizes', connect);
+		connect();
+
+		removeEventListener('lazybeforeunveil', addObserver);
+	};
+
+
+	addEventListener('lazybeforeunveil', addObserver);
+}));
 
 
 /***/ }),

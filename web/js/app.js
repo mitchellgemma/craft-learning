@@ -86,7 +86,7 @@ const App = () => {
       setFilter('odd')
       event.currentTarget.classList.add("checked")
       document.querySelector('.checked').classList.remove('checked')
-      window.history.pushState("", "", '/type-of-number/even')
+      window.history.pushState("", "", '/type-of-number/odd')
     }
     allButton.addEventListener("click", showAll)
     evenButton.addEventListener("click", showEven)

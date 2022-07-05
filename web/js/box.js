@@ -33,10 +33,6 @@ const Box = (props) => {
         { opacity: 1, ease: Power4.easeOut, duration: 0.01 },
         '>'
       );
-
-    //   if (data.boxCategory[0].title === 'even'){
-    //   even.push(data)
-    // }
   }, []);
 
 
